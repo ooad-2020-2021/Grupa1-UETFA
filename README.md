@@ -1,4 +1,3 @@
-# Grupa1-Tim4
 # Tema: UETFA
 ## Članovi tima:
 1.	Adi Dizdarević
