@@ -16,11 +16,11 @@ Pomoću ove aplikacije pratite sve rezultate potpuno besplatno, a za dodatne pog
 
 ## Registrovani korisnici:
 *	Mogućnost uzimanja Premium paketa i internet plaćanja
-*	Mogućnost otkazivanja Premium paketa
 *	Pregled rezultata 
 *	Mogućnost pretrage po filterima
 
 ## Premium korisnici:
+*	Mogućnost otkazivanja Premium paketa
 *	Mogućnost praćenja timova
 *	Mogućnost pregleda koji igrači su dali gol i asistencija
 *	Mogućnost gledanja live stream-a
