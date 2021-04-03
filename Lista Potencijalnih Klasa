@@ -1,0 +1,25 @@
+
+enum Tip{Administrator,Sudija,Korisnik,PremiumKorisnik}
+
+klasa Liga
+List<Tim> timovi
+
+klasa Osoba
+string ime
+string korisnickoime
+string password
+string e-mail
+Tip tip
+
+klasa Igrac
+string ime
+Tim tim
+int brojgolova
+int brojzutihhkartona
+int brojcrvenihkartona
+
+klasa Tim
+string ime
+List<Igrac> igraci
+int broj_odigranih, broj_pobjeda, broj_nerijesenih, broj_poraza, broj_datih_golova,
+broj_primljenih_golova, broj_poena
