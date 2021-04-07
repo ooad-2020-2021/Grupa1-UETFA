@@ -1,0 +1,23 @@
+class User
+Sadrži Ime, Username, Password
+
+class Premium User
+Naslijeđuje Usera uz dodatne podatke o kartici za plaćanje
+
+class Utakmica
+ID utakmice, Sudija, Timovi koji igraju utakmicu (2), podatke o rezultatu, Lista Igrača(strijelci), Status (odigrana, nadolazeća)
+
+class Tim
+Sadrži Listu Igrača, i sve ostale podatke vezane za statistiku u tabeli (bodovi, gol razlika itd)
+
+class Igrač
+Ime i prezime, statistika (golovi, kartoni)
+
+class Sudija
+Ime prezime, Utakmica za koju je zadužen
+
+class Live Stream
+ID streama, Utakmica
+
+class Notifikacija
+ID notifikacije, Utakmica
