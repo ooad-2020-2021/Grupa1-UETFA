@@ -13,11 +13,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Toshiba\\source\\repos\\ooad-2020-2021\\Grupa1-UETFA\\ConsoleApp1\\ConsoleApp1.csproj",
-      "projectName": "ConsoleApp1",
-      "projectPath": "C:\\Users\\Toshiba\\source\\repos\\ooad-2020-2021\\Grupa1-UETFA\\ConsoleApp1\\ConsoleApp1.csproj",
+      "projectUniqueName": "C:\\Users\\Toshiba\\source\\repos\\ooad-2020-2021\\Grupa1-UETFA\\UETFA_ConsoleApp_start\\UETFA_ConsoleApp\\UETFA_ConsoleApp.csproj",
+      "projectName": "UETFA_ConsoleApp",
+      "projectPath": "C:\\Users\\Toshiba\\source\\repos\\ooad-2020-2021\\Grupa1-UETFA\\UETFA_ConsoleApp_start\\UETFA_ConsoleApp\\UETFA_ConsoleApp.csproj",
       "packagesPath": "C:\\Users\\Toshiba\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Toshiba\\source\\repos\\ooad-2020-2021\\Grupa1-UETFA\\ConsoleApp1\\obj\\",
+      "outputPath": "C:\\Users\\Toshiba\\source\\repos\\ooad-2020-2021\\Grupa1-UETFA\\UETFA_ConsoleApp_start\\UETFA_ConsoleApp\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\Toshiba\\AppData\\Roaming\\NuGet\\NuGet.Config",
