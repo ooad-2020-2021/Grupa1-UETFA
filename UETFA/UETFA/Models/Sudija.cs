@@ -8,8 +8,10 @@ namespace UETFA.Models
 {
     public class Sudija
     {
-        [NotMapped]
-        public Utakmica utakmica { get; set; }
 
+        public int ID { get; set; }
+        /*[NotMapped]
+        public Utakmica utakmica { get; set; }
+        */
     }
 }

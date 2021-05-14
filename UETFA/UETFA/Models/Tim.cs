@@ -8,6 +8,7 @@ namespace UETFA.Models
 {
     public class Tim
     {
+        public int ID { get; set; }
         public string ime { get; set; }
         public int datiGolovi { get; set; }
         public int primljeniGolovi { get; set; }

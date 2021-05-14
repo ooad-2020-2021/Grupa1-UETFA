@@ -7,6 +7,8 @@ namespace UETFA.Models
 {
     public class Rezultat
     {
+        public int ID { get; set; }
+
         public int domaci { get; set; }
         public int gosti { get; set; }
 

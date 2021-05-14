@@ -9,10 +9,12 @@ namespace UETFA.Models
 {
     public class Notifikacija
     {
-        [Key]
-        public int idNotifikacije { get; set; }
-        [NotMapped]
+        public int ID { get; set; }
+        // dodati utakmica ID
+        [NotMapped] 
         public Utakmica utakmica { get; set; }
+
+        [NotMapped]
         public List<Premium> korisnici { get; set; }
 
     }

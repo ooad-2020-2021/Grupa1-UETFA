@@ -7,6 +7,7 @@ namespace UETFA.Models
 {
     public class Premium
     {
+        public int ID{ get; set; }
         public string imeVlasnikaKartice { get; set; }
         public int brojKartice { get; set; }
         public int cvc { get; set; }

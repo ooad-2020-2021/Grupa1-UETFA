@@ -9,9 +9,10 @@ namespace UETFA.Models
 {
     public class LiveStream
     {
-        [Key]
-        public int idLive { get; set; }
-        [NotMapped]
+    
+        public int ID { get; set; }
+        //dodati utakmica ID
+        [NotMapped]  
         public Utakmica utakmica { get; set; }
 
     }
