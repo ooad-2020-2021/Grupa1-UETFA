@@ -46,15 +46,11 @@ namespace UETFA.Controllers
         // GET: Utakmica/Create
         public IActionResult Create()
         {
-            var vm = new MyViewModel();
-            vm.timovi = DbContext.Tim
-                                  .Select(a => new SelectListItem()
-                                  {
-                                      Value = a.ID.ToString(),
-                                      Text = a.ime
-                                  })
-                                  .ToList();
-            return View(vm);
+            ViewBag.Timovi = new List<SelectListItem>();
+            List<Tim> timovi = _context.Tim.ToList();
+            foreach (var p in timovi)
+                ViewBag.Timovi.Add(new SelectListItem() { Text = p.ime, Value = p.ID.ToString() });
+            return View();
         }
 
         // POST: Utakmica/Create

@@ -30,5 +30,6 @@ namespace UETFA.Models
         [NotMapped]
         public List<Igrac> asistenti { get; set; }
 
+
     }
 }
