@@ -1,0 +1,48 @@
+﻿@model UETFA.Models.Utakmica
+
+@{
+    ViewData["Title"] = "Details";
+}
+<span style="color:white;">
+    <h1>Details</h1>
+
+    <div>
+        <h4>Utakmica</h4>
+        <hr />
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.statusUtakmice)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.statusUtakmice)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.datumUtakmice)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.datumUtakmice)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.tim1)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.tim1)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.tim2)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.tim2)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.rezultat)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.rezultat)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.ID">Edit</a> |
+        <a asp-action="Index">Back to List</a>
+    </div>

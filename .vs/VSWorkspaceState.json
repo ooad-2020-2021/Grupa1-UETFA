@@ -1,6 +1,11 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\UETFA",
+    "\\UETFA\\UETFA",
+    "\\UETFA\\UETFA\\Controllers",
+    "\\UETFA\\UETFA\\Properties"
   ],
+  "SelectedNode": "\\UETFA\\UETFA\\Properties\\serviceDependencies.local.json.user",
   "PreviewInSolutionExplorer": false
 }

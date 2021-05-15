@@ -1,0 +1,53 @@
+﻿@model UETFA.Models.Utakmica
+
+@{
+    ViewData["Title"] = "Create";
+}
+<span style="color:white;">
+    <h1>Create</h1>
+
+    <h4>Utakmica</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="statusUtakmice" class="control-label"></label>
+                    <input asp-for="statusUtakmice" class="form-control" />
+                    <span asp-validation-for="statusUtakmice" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="datumUtakmice" class="control-label"></label>
+                    <input asp-for="datumUtakmice" class="form-control" />
+                    <span asp-validation-for="datumUtakmice" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="tim1.ime" class="control-label"></label>
+                    <input asp-for="tim1.ime" class="form-control" />
+                    <span asp-validation-for="tim1.ime" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="tim2.ime" class="control-label"></label>
+                    <input asp-for="tim2.ime" class="form-control" />
+                    <span asp-validation-for="tim2.ime" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="rezultat" class="control-label"></label>
+                    <input asp-for="rezultat" class="form-control" />
+                    <span asp-validation-for="rezultat" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+
+    @section Scripts {
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    }
