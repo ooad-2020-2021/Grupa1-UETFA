@@ -4,8 +4,10 @@
     "\\UETFA",
     "\\UETFA\\UETFA",
     "\\UETFA\\UETFA\\Controllers",
-    "\\UETFA\\UETFA\\Properties"
+    "\\UETFA\\UETFA\\Properties",
+    "\\UETFA\\UETFA\\Views",
+    "\\UETFA\\UETFA\\Views\\Utakmica"
   ],
-  "SelectedNode": "\\UETFA\\UETFA\\Properties\\serviceDependencies.local.json.user",
+  "SelectedNode": "\\UETFA\\UETFA.sln",
   "PreviewInSolutionExplorer": false
 }

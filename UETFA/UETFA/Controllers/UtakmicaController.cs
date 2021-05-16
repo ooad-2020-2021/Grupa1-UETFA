@@ -82,7 +82,11 @@ namespace UETFA.Controllers
             {
                 return NotFound();
             }
-            return View(utakmica);
+            ViewBag.Timovi = new List<SelectListItem>();
+            List<Tim> timovi = _context.Tim.ToList();
+            foreach (var p in timovi)
+                ViewBag.Timovi.Add(new SelectListItem() { Text = p.ime, Value = p.ID.ToString() });
+            return View();
         }
 
         // POST: Utakmica/Edit/5
