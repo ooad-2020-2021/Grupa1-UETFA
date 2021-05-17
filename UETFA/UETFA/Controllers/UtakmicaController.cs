@@ -22,6 +22,15 @@ namespace UETFA.Controllers
         // GET: Utakmica
         public async Task<IActionResult> Index()
         {
+            ViewBag.nazivitimove1 = new List<SelectListItem>();
+            ViewBag.nazivitimove2 = new List<SelectListItem>();
+            List<Utakmica> utakmice = _context.Utakmica.ToList();
+            foreach (var u in utakmice)
+           {
+                ViewBag.nazivitimove1.add(new SelectListItem() { Text=u.tim1.ime , Value=(u.tim1.ID).ToString() });
+                ViewBag.nazivitimove2.add(new SelectListItem() { Text = u.tim2.ime, Value = (u.tim2.ID).ToString() });
+
+            }
             return View(await _context.Utakmica.ToListAsync());
         }
 
