@@ -22,17 +22,17 @@ namespace UETFA.Controllers
         // GET: Utakmica
         public async Task<IActionResult> Index()
         {
-            ViewBag.nazivitimove1 = new List<SelectListItem>();
-            ViewBag.nazivitimove2 = new List<SelectListItem>();
+          ViewBag.nazivi1 = new List<SelectListItem>();
+            ViewBag.nazivi2 = new List<SelectListItem>();
             List<Utakmica> utakmice = _context.Utakmica.ToList();
             List<Tim> timovi = _context.Tim.ToList();
             foreach (var u in utakmice)
            {
                 Tim t1 = timovi.Find(t => t.ID == u.idTima1);
                 Tim t2 = timovi.Find(t => t.ID == u.idTima2);
-                ViewBag.nazivitimove1.add(new SelectListItem() { Text=t1.ime , Value=(t1.ID).ToString() });
-                ViewBag.nazivitimove2.add(new SelectListItem() { Text = t2.ime, Value = (t2.ID).ToString() });
-
+              ViewBag.nazivi1.Add(new SelectListItem() { Text=t1.ime , Value=(t1.ID).ToString() });
+              ViewBag.nazivi2.Add(new SelectListItem() { Text=t2.ime, Value=(t2.ID).ToString() });
+               
             }
             return View(await _context.Utakmica.ToListAsync());
         }
@@ -70,7 +70,7 @@ namespace UETFA.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,statusUtakmice,datumUtakmice,idTima1,idTima1")] Utakmica utakmica)
+        public async Task<IActionResult> Create([Bind("ID,statusUtakmice,datumUtakmice,idTima1,idTima2")] Utakmica utakmica)
         {
             if (ModelState.IsValid)
             {
@@ -106,7 +106,7 @@ namespace UETFA.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,statusUtakmice,datumUtakmice")] Utakmica utakmica)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,statusUtakmice,datumUtakmice,idTima1,idTima2")] Utakmica utakmica)
         {
             if (id != utakmica.ID)
             {
