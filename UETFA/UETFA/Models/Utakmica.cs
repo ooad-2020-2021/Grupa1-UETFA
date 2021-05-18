@@ -16,13 +16,13 @@ namespace UETFA.Models
         [DisplayName("Datum Utakmice")]
         public DateTime datumUtakmice { get; set; }
         [DisplayName("Sudija")]
-        public Sudija sudija { get; set; }
+        public int idSudije { get; set; }
         [DisplayName("Tim 1")]
-        public Tim tim1 { get; set; }
+        public int idTima1 { get; set; }
         [DisplayName("Tim 2")]
-        public Tim tim2 { get; set; }
+        public int idTima2 { get; set; }
         [DisplayName("Rezultat")]
-        public Rezultat rezultat { get; set; }
+        public int idRezultata { get; set; }
 
         [NotMapped]
         public List<Igrac> strijelci { get; set; }

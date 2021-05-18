@@ -25,10 +25,13 @@ namespace UETFA.Controllers
             ViewBag.nazivitimove1 = new List<SelectListItem>();
             ViewBag.nazivitimove2 = new List<SelectListItem>();
             List<Utakmica> utakmice = _context.Utakmica.ToList();
+            List<Tim> timovi = _context.Tim.ToList();
             foreach (var u in utakmice)
            {
-                ViewBag.nazivitimove1.add(new SelectListItem() { Text=u.tim1.ime , Value=(u.tim1.ID).ToString() });
-                ViewBag.nazivitimove2.add(new SelectListItem() { Text = u.tim2.ime, Value = (u.tim2.ID).ToString() });
+                Tim t1 = timovi.Find(t => t.ID == u.idTima1);
+                Tim t2 = timovi.Find(t => t.ID == u.idTima2);
+                ViewBag.nazivitimove1.add(new SelectListItem() { Text=t1.ime , Value=(t1.ID).ToString() });
+                ViewBag.nazivitimove2.add(new SelectListItem() { Text = t2.ime, Value = (t2.ID).ToString() });
 
             }
             return View(await _context.Utakmica.ToListAsync());
@@ -67,7 +70,7 @@ namespace UETFA.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,statusUtakmice,datumUtakmice")] Utakmica utakmica)
+        public async Task<IActionResult> Create([Bind("ID,statusUtakmice,datumUtakmice,idTima1,idTima1")] Utakmica utakmica)
         {
             if (ModelState.IsValid)
             {
@@ -158,6 +161,16 @@ namespace UETFA.Controllers
         {
             var utakmica = await _context.Utakmica.FindAsync(id);
             _context.Utakmica.Remove(utakmica);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        // GET: Utakmica/DeleteAll
+        public async Task<IActionResult> DeleteAll()
+        {
+            List<Utakmica> sveUtakmice = _context.Utakmica.ToList();
+            foreach (Utakmica u in sveUtakmice)
+                _context.Utakmica.Remove(u);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }

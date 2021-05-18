@@ -19,13 +19,13 @@
                     @Html.DisplayNameFor(model => model.datumUtakmice)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.tim1)
+                    @Html.DisplayNameFor(model => model.idTima1)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.tim2)
+                    @Html.DisplayNameFor(model => model.idTima2)
                 </th>
                 <th>
-                    @Html.DisplayNameFor(model => model.rezultat)
+                    @Html.DisplayNameFor(model => model.idRezultata)
                 </th>
                 <th></th>
             </tr>
@@ -47,7 +47,7 @@
                     @Html.Label((string)ViewBag.nazivitimove2)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.rezultat)
+                    @Html.DisplayFor(modelItem => item.idRezultata)
                 </td>
                 <td>
                     <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |

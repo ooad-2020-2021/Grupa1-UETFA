@@ -24,19 +24,19 @@
                     <span asp-validation-for="datumUtakmice" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <select asp-for="tim1.ime" asp-items="@ViewBag.Timovi">
+                    <select asp-for="idTima1" asp-items="@ViewBag.Timovi">
                         <option>Odaberite prvi tim:</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <select asp-for="tim1.ime" asp-items="@ViewBag.Timovi">
+                    <select asp-for="idTima2" asp-items="@ViewBag.Timovi">
                         <option>Odaberite drugi tim:</option>
                     </select>
                 </div>
                 <div class="form-group">
-                    <label asp-for="rezultat" class="control-label"></label>
-                    <input asp-for="rezultat" class="form-control" />
-                    <span asp-validation-for="rezultat" class="text-danger"></span>
+                    <label asp-for="idRezultata" class="control-label"></label>
+                    <input asp-for="idRezultata" class="form-control" />
+                    <span asp-validation-for="idRezultata" class="text-danger"></span>
                 </div>
                 <div class="form-group">
                     <input type="submit" value="Save" class="btn btn-primary" />
