@@ -33,6 +33,16 @@
                     </select>
                 </div>
                 <div class="form-group">
+                    <label asp-for="rezTim1" class="control-label"></label>
+                    <input asp-for="rezTim1" class="form-control" />
+                    <span asp-validation-for="rezTim1" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="rezTim2" class="control-label"></label>
+                    <input asp-for="rezTim2" class="form-control" />
+                    <span asp-validation-for="rezTim2" class="text-danger"></span>
+                </div>
+                <div class="form-group">
                     <input type="submit" value="Create" class="btn btn-primary" />
                 </div>
             </form>

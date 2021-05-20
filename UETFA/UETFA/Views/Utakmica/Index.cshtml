@@ -11,7 +11,7 @@
     </p>
     <table class="table">
         <thead>
-            <tr style="color:white">
+            <tr style="color:white" class="text-center">
                 <th>
                     @Html.DisplayNameFor(model => model.statusUtakmice)
                 </th>
@@ -24,9 +24,11 @@
                 <th>
                     @Html.DisplayNameFor(model => model.idTima2)
                 </th>
+
                 <th>
-                    @Html.DisplayNameFor(model => model.idRezultata)
+                    Rezultat
                 </th>
+
                 <th></th>
             </tr>
         </thead>
@@ -36,32 +38,33 @@
                 {
                     @foreach (var item in Model)
                     {
-                        <tr style="color:white">
-                            <td>
-                                @Html.DisplayFor(modelItem => item.statusUtakmice)
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.datumUtakmice)
-                            </td>
-                            <td>
+            <tr style="color:white" class="text-center">
+                <td>
+                    @Html.DisplayFor(modelItem => item.statusUtakmice)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.datumUtakmice)
+                </td>
+                <td>
 
-                                @ViewBag.nazivi1[i].Text
+                    @ViewBag.nazivi1[i].Text
 
-                            </td>
-                            <td>
+                </td>
+                <td>
 
-                                @ViewBag.nazivi2[i].Text
+                    @ViewBag.nazivi2[i].Text
 
-                            </td>
-                            <td>
-                                @Html.DisplayFor(modelItem => item.idRezultata)
-                            </td>
-                            <td>
-                                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-                            </td>
-                        </tr>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.rezTim1) : @Html.DisplayFor(modelItem => item.rezTim2)
+                </td>
+                
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
                         i++;
                     }
                 

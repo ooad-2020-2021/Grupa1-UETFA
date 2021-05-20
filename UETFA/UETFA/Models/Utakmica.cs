@@ -21,9 +21,10 @@ namespace UETFA.Models
         public int idTima1 { get; set; }
         [DisplayName("Tim 2")]
         public int idTima2 { get; set; }
-        [DisplayName("Rezultat")]
-        public int idRezultata { get; set; }
-
+        [DisplayName("Golovi domaćina")]
+        public int rezTim1 { get; set; }
+        [DisplayName("Golovi gosta")]
+        public int rezTim2 { get; set; }
         [NotMapped]
         public List<Igrac> strijelci { get; set; }
 
