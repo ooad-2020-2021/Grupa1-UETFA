@@ -1,0 +1,71 @@
+﻿@model IEnumerable<UETFA.Models.Utakmica>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.statusUtakmice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.datumUtakmice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.idTima1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.idTima2)
+            </th>
+
+            <th>
+                Rezultat
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @for (var i = 0; i < ViewBag.nazivi1.Count; i++)
+
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.statusUtakmice)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.datumUtakmice)
+                    </td>
+                    <td>
+                        @ViewBag.nazivi1[i].Text
+                    </td>
+                    <td>
+                        @ViewBag.nazivi2[i].Text
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.rezTim1) : @Html.DisplayFor(modelItem => item.rezTim2)
+                    </td>
+                    <td>
+                        @if (item.statusUtakmice != "zavrsena")
+                        {
+                            <a asp-action="Edit" asp-route-id="@item.ID">Edit</a>} |                        |
+                        <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                        @if (item.statusUtakmice != "zavrsena")
+                        {
+                            <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>}
+                        </td>
+                </tr>
+                i++;
+                        }
+        }
+        </tbody>
+</table>

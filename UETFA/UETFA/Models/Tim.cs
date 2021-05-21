@@ -11,6 +11,7 @@ namespace UETFA.Models
     {
         public int ID { get; set; }
         [DisplayName("Ime")]
+        public int TimID { get; set; }
         public string ime { get; set; }
         [DisplayName("Dati Golovi")]
         public int datiGolovi { get; set; }
@@ -20,6 +21,14 @@ namespace UETFA.Models
         public int brojOdigranihUtakmica { get; set; }
         [DisplayName("Trener")]
         public string trener { get; set; }
+        [DisplayName("Bodovi")]
+        public int bodovi { get; set; }
+        [DisplayName("Pobjede")]
+        public int brojPobjeda { get; set; }
+        [DisplayName("Nerješeni")]
+        public int brojNerjesenih { get; set; }
+        [DisplayName("Porazi")]
+        public int brojPoraza { get; set; }
 
         [NotMapped]
         public List<Igrac> igraci { get; set; }

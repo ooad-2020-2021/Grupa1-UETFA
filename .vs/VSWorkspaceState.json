@@ -4,10 +4,13 @@
     "\\UETFA",
     "\\UETFA\\UETFA",
     "\\UETFA\\UETFA\\Controllers",
+    "\\UETFA\\UETFA\\Models",
     "\\UETFA\\UETFA\\Properties",
     "\\UETFA\\UETFA\\Views",
-    "\\UETFA\\UETFA\\Views\\Utakmica"
+    "\\UETFA\\UETFA\\Views\\Timovi",
+    "\\UETFA\\UETFA\\Views\\Utakmica",
+    "\\UETFA\\UETFA\\wwwroot\\css"
   ],
-  "SelectedNode": "\\UETFA\\UETFA.sln",
+  "SelectedNode": "\\UETFA\\UETFA\\Views\\Timovi\\Details.cshtml",
   "PreviewInSolutionExplorer": false
 }

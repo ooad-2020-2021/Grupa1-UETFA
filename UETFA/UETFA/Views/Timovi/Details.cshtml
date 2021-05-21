@@ -1,0 +1,109 @@
+﻿@model Dictionary<List<Igrac>, Tim>
+
+@{
+    ViewData["Title"] = "Details";
+}
+
+<h1>Details</h1>
+
+<div>
+    <h4>Tim</h4>
+    <hr />
+    <dl class="row">
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ElementAt(0).Value.ime)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ElementAt(0).Value.ime)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ElementAt(0).Value.datiGolovi)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ElementAt(0).Value.datiGolovi)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ElementAt(0).Value.primljeniGolovi)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ElementAt(0).Value.primljeniGolovi)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ElementAt(0).Value.brojOdigranihUtakmica)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ElementAt(0).Value.brojOdigranihUtakmica)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ElementAt(0).Value.trener)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ElementAt(0).Value.trener)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-action="Edit" asp-route-id="@Model.ElementAt(0).Value.ID">Edit</a> |
+    <a asp-action="Index">Back to List</a>
+</div>
+
+<h1>Igrači</h1>
+
+<p>
+    <a asp-action="CreateIgraci">Dodaj igrača</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.ElementAt(0).Key.ElementAt(0).TimID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ElementAt(0).Key.ElementAt(0).imePrezime)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ElementAt(0).Key.ElementAt(0).brojGolova)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ElementAt(0).Key.ElementAt(0).brojAsistencija)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ElementAt(0).Key.ElementAt(0).brojCrvenihKartona)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ElementAt(0).Key.ElementAt(0).brojZutihKartona)
+            </th>
+            <th></th>
+        </tr>
+ </thead>
+ <tbody>
+        @foreach (var item in Model.ElementAt(0).Key)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TimID)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.imePrezime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.brojGolova)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.brojAsistencija)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.brojCrvenihKartona)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.brojZutihKartona)
+                </td>
+                <td>
+                    <a asp-action="EditIgraci" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-action="DetailsIgraci" asp-route-id="@item.ID">Details</a> |
+                    <a asp-action="DeleteIgraci" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

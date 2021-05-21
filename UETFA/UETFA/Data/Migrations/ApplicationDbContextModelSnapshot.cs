@@ -226,6 +226,9 @@ namespace UETFA.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("TimID")
+                        .HasColumnType("int");
+
                     b.Property<int>("brojAsistencija")
                         .HasColumnType("int");
 
@@ -331,7 +334,22 @@ namespace UETFA.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("TimID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("bodovi")
+                        .HasColumnType("int");
+
+                    b.Property<int>("brojNerjesenih")
+                        .HasColumnType("int");
+
                     b.Property<int>("brojOdigranihUtakmica")
+                        .HasColumnType("int");
+
+                    b.Property<int>("brojPobjeda")
+                        .HasColumnType("int");
+
+                    b.Property<int>("brojPoraza")
                         .HasColumnType("int");
 
                     b.Property<int>("datiGolovi")
@@ -360,9 +378,6 @@ namespace UETFA.Data.Migrations
 
                     b.Property<DateTime>("datumUtakmice")
                         .HasColumnType("datetime2");
-
-                    b.Property<int>("idSudije")
-                        .HasColumnType("int");
 
                     b.Property<int>("idTima1")
                         .HasColumnType("int");

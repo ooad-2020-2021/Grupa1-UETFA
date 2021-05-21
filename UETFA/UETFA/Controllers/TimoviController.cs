@@ -1,0 +1,299 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using UETFA.Data;
+using UETFA.Models;
+
+namespace UETFA.Controllers
+{
+    public class TimoviController : Controller
+    {
+        private readonly ApplicationDbContext _context;
+
+        public TimoviController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        // GET: Timovi
+        public async Task<IActionResult> Index()
+        {
+            return View(await _context.Tim.ToListAsync());
+        }
+
+        // GET: Timovi/Details/5
+        public async Task<IActionResult> Details(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var tim = await _context.Tim
+                .FirstOrDefaultAsync(m => m.ID == id);
+            if (tim == null)
+            {
+                return NotFound();
+            }
+            var igraci =
+                await _context.Igrac.Where(m => m.TimID == id).ToListAsync();
+
+            var par = new Dictionary<List<Igrac>, Tim>();
+            par.Add(igraci, tim);
+            return View(par);
+        }
+
+        // GET: Timovi/Create
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        // POST: Timovi/Create
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create([Bind("ID,ime,datiGolovi,primljeniGolovi,brojOdigranihUtakmica,trener")] Tim tim)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(tim);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(tim);
+        }
+
+        // GET: Timovi/Edit/5
+        public async Task<IActionResult> Edit(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var tim = await _context.Tim.FindAsync(id);
+            if (tim == null)
+            {
+                return NotFound();
+            }
+            return View(tim);
+        }
+
+        // POST: Timovi/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(int id, [Bind("ID,ime,datiGolovi,primljeniGolovi,brojOdigranihUtakmica,trener")] Tim tim)
+        {
+            if (id != tim.ID)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(tim);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!TimExists(tim.ID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(tim);
+        }
+
+        // GET: Timovi/Delete/5
+        public async Task<IActionResult> Delete(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var tim = await _context.Tim
+                .FirstOrDefaultAsync(m => m.ID == id);
+            if (tim == null)
+            {
+                return NotFound();
+            }
+
+            return View(tim);
+        }
+
+        // POST: Timovi/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmed(int id)
+        {
+            var tim = await _context.Tim.FindAsync(id);
+            _context.Tim.Remove(tim);
+            var igraci =
+                await _context.Igrac.Where(m => m.TimID == id).ToListAsync();
+
+            foreach(var igrac in igraci)
+            {
+                _context.Igrac.Remove(igrac);
+            }
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+        private bool TimExists(int id)
+        {
+            return _context.Tim.Any(e => e.ID == id);
+        }
+
+
+        // igraci dio 
+
+
+        // GET: Timovi/CreateIgrac
+        public IActionResult CreateIgraci()
+        {
+            return View();
+        }
+
+        // POST: Timovi/CreateIgrac
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> CreateIgraci([Bind("ID,TimID,imePrezime,brojGolova,brojAsistencija,brojCrvenihKartona,brojZutihKartona")] Igrac igrac)
+        {
+            if (ModelState.IsValid)
+            {
+                _context.Add(igrac);
+                await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
+            return View(igrac);
+        }
+        // GET: Timovi/Delete/5
+        public async Task<IActionResult> DeleteIgraci(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var igrac = await _context.Igrac
+                .FirstOrDefaultAsync(m => m.ID == id);
+            if (igrac == null)
+            {
+                return NotFound();
+            }
+
+            return View(igrac);
+        }
+
+        // POST: Timovi/Delete/5
+        [HttpPost, ActionName("DeleteIgraci")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> DeleteConfirmedIgraci(int id)
+        {
+            var igrac = await _context.Igrac.FindAsync(id);
+            _context.Igrac.Remove(igrac);
+            await _context.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+
+
+        // GET: Timovi/Details/5
+        public async Task<IActionResult> DetailsIgraci(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var igrac = await _context.Igrac
+                .FirstOrDefaultAsync(m => m.ID == id);
+            if (igrac == null)
+            {
+                return NotFound();
+            }
+
+            return View(igrac);
+        }
+
+        // GET: Timovi/Edit/5
+        public async Task<IActionResult> EditIgraci(int? id)
+        {
+            if (id == null)
+            {
+                return NotFound();
+            }
+
+            var igrac = await _context.Igrac.FindAsync(id);
+            if (igrac == null)
+            {
+                return NotFound();
+            }
+            return View(igrac);
+        }
+
+        // POST: Timovi/Edit/5
+        // To protect from overposting attacks, enable the specific properties you want to bind to, for 
+        // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EditIgraci(int id, [Bind("ID,TimID,imePrezime,brojGolova,brojAsistencija,brojCrvenihKartona,brojZutihKartona")] Igrac igrac)
+        {
+            if (id != igrac.ID)
+            {
+                return NotFound();
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Update(igrac);
+                    await _context.SaveChangesAsync();
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!IgracExists(igrac.ID))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
+                return RedirectToAction(nameof(Index));
+            }
+            return View(igrac);
+        }
+
+
+
+
+        private bool IgracExists(int id)
+        {
+            return _context.Igrac.Any(e => e.ID == id);
+        }
+
+
+    }
+}
+

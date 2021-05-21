@@ -15,8 +15,6 @@ namespace UETFA.Models
         public string statusUtakmice { get; set; }
         [DisplayName("Datum Utakmice")]
         public DateTime datumUtakmice { get; set; }
-        [DisplayName("Sudija")]
-        public int idSudije { get; set; }
         [DisplayName("Tim 1")]
         public int idTima1 { get; set; }
         [DisplayName("Tim 2")]
