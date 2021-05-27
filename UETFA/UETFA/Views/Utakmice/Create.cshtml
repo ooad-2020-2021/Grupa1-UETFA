@@ -13,9 +13,9 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="statusUtakmice" class="control-label"></label>
-                <input asp-for="statusUtakmice" class="form-control" />
-                <span asp-validation-for="statusUtakmice" class="text-danger"></span>
+                <select asp-for="statusUtakmice" asp-items="@ViewBag.status">
+                    <option>Odaberite status:</option>
+                </select>
             </div>
             <div class="form-group">
                 <label asp-for="datumUtakmice" class="control-label"></label>

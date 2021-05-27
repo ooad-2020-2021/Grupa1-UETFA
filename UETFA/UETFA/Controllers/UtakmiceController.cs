@@ -76,6 +76,9 @@ namespace UETFA.Controllers
             List<Tim> timovi = _context.Tim.ToList();
             foreach (var p in timovi)
                 ViewBag.Timovi.Add(new SelectListItem() { Text = p.ime, Value = p.ID.ToString() });
+            ViewBag.status = new List<SelectListItem>();
+            ViewBag.status.Add( new SelectListItem() {Text= "Nije pocelo" });
+            ViewBag.status.Add(new SelectListItem() { Text = "U toku" });
             return View();
         }
 
@@ -112,6 +115,9 @@ namespace UETFA.Controllers
             List<Tim> timovi = _context.Tim.ToList();
             foreach (var p in timovi)
                 ViewBag.Timovi.Add(new SelectListItem() { Text = p.ime, Value = p.ID.ToString() });
+            ViewBag.status = new List<SelectListItem>();
+            ViewBag.status.Add(new SelectListItem() { Text = "Nije pocelo" });
+            ViewBag.status.Add(new SelectListItem() { Text = "U toku" });
             return View(utakmica);
         }
 
