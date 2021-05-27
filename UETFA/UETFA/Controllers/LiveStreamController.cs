@@ -4,12 +4,13 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.Web.Http;
 using System.IO;
 using System.Net;
 using System.Net.Http;
 using System.Web;
 using System.Web.Http;
+using System.Reflection;
+
 namespace UETFA.Controllers
 {
 
@@ -23,13 +24,13 @@ namespace UETFA.Controllers
         }
         public async void WriteContentToStream(Stream outputStream, HttpContent content, TransportContext transportContext)
         {
-            //path of file which we have to read//  
-            var filePath = HttpContext.Current.Server.MapPath("~/live.mp4");
+            //path of file which we have to read//
+            var filePath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "/live.mp4";
             //here set the size of buffer, you can set any size  
             int bufferSize = 1000;
             byte[] buffer = new byte[bufferSize];
             //here we re using FileStream to read file from server//  
-            using (var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read))
+            using (var fileStream = new FileStream(path: filePath, mode: FileMode.Open, access: FileAccess.Read, share: FileShare.Read))
             {
                 int totalSize = (int)fileStream.Length;
                 /*here we are saying read bytes from file as long as total size of file 
