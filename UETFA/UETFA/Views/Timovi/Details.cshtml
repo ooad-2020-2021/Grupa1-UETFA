@@ -40,6 +40,30 @@
         <dd class="col-sm-10">
             @Html.DisplayFor(model => model.ElementAt(0).Value.trener)
         </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ElementAt(0).Value.brojPobjeda)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ElementAt(0).Value.brojPobjeda)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ElementAt(0).Value.brojNerjesenih)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ElementAt(0).Value.brojNerjesenih)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ElementAt(0).Value.brojPoraza)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ElementAt(0).Value.brojPoraza)
+        </dd>
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.ElementAt(0).Value.bodovi)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.ElementAt(0).Value.bodovi)
+        </dd>
     </dl>
 </div>
 <div>
@@ -55,9 +79,6 @@
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.ElementAt(0).Key.ElementAt(0).TimID)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.ElementAt(0).Key.ElementAt(0).imePrezime)
             </th>
@@ -80,9 +101,6 @@
         @foreach (var item in Model.ElementAt(0).Key)
         {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.TimID)
-                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.imePrezime)
                 </td>

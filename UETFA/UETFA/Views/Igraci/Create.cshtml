@@ -13,9 +13,9 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="TimID" class="control-label"></label>
-                <input asp-for="TimID" class="form-control" />
-                <span asp-validation-for="TimID" class="text-danger"></span>
+                <select asp-for="TimID" asp-items="@ViewBag.Timovi">
+                    <option>Odaberite tim:</option>
+                </select>
             </div>
             <div class="form-group">
                 <label asp-for="imePrezime" class="control-label"></label>

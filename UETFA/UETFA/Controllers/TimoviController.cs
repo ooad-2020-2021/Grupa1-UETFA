@@ -22,7 +22,7 @@ namespace UETFA.Controllers
         // GET: Timovi
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Tim.ToListAsync());
+            return View(await _context.Tim.OrderByDescending(o => o.bodovi).ToListAsync());
         }
 
         // GET: Timovi/Details/5
@@ -58,7 +58,7 @@ namespace UETFA.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,ime,datiGolovi,primljeniGolovi,brojOdigranihUtakmica,trener")] Tim tim)
+        public async Task<IActionResult> Create([Bind("ID,ime,datiGolovi,primljeniGolovi,brojOdigranihUtakmica,trener,brojPobjeda,brojNeriješenih,brojPoraza,bodovi")] Tim tim)
         {
             if (ModelState.IsValid)
             {
@@ -90,7 +90,7 @@ namespace UETFA.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,ime,datiGolovi,primljeniGolovi,brojOdigranihUtakmica,trener")] Tim tim)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,ime,datiGolovi,primljeniGolovi,brojOdigranihUtakmica,trener,brojPobjeda,brojNeriješenih,brojPoraza,bodovi")] Tim tim)
         {
             if (id != tim.ID)
             {

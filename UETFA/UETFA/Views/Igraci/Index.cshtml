@@ -34,32 +34,37 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.TimID)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.imePrezime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.brojGolova)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.brojAsistencija)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.brojCrvenihKartona)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.brojZutihKartona)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
+        @for (var i = 0; i < ViewBag.nazivi1.Count; i++)
+        {
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @ViewBag.nazivi1[i].Text
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.imePrezime)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.brojGolova)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.brojAsistencija)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.brojCrvenihKartona)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.brojZutihKartona)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                    </td>
+                </tr>
+                i++;
+            }
+        }
     </tbody>
 </table>

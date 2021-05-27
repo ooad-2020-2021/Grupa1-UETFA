@@ -8842,19 +8842,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Toshiba\\.nuget\\packages\\": {}
+    "C:\\Users\\Hana\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Toshiba\\Source\\Repos\\ooad-2020-2021\\Grupa1-UETFA\\UETFA\\UETFA\\UETFA.csproj",
+      "projectUniqueName": "C:\\Users\\Hana\\source\\repos\\Grupa1-UETFA\\UETFA\\UETFA\\UETFA.csproj",
       "projectName": "UETFA",
-      "projectPath": "C:\\Users\\Toshiba\\Source\\Repos\\ooad-2020-2021\\Grupa1-UETFA\\UETFA\\UETFA\\UETFA.csproj",
-      "packagesPath": "C:\\Users\\Toshiba\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Toshiba\\Source\\Repos\\ooad-2020-2021\\Grupa1-UETFA\\UETFA\\UETFA\\obj\\",
+      "projectPath": "C:\\Users\\Hana\\source\\repos\\Grupa1-UETFA\\UETFA\\UETFA\\UETFA.csproj",
+      "packagesPath": "C:\\Users\\Hana\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\Hana\\source\\repos\\Grupa1-UETFA\\UETFA\\UETFA\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Toshiba\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\Hana\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -8925,7 +8925,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.201\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
       }
     }
   }

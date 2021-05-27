@@ -22,6 +22,14 @@ namespace UETFA.Controllers
         // GET: Igraci
         public async Task<IActionResult> Index()
         {
+            ViewBag.nazivi1 = new List<SelectListItem>();
+            List<Igrac> igraci = _context.Igrac.ToList();
+            List<Tim> timovi = _context.Tim.ToList();
+            foreach (var u in igraci)
+            {
+                Tim t1 = timovi.Find(t => t.ID == u.TimID);
+                ViewBag.nazivi1.Add(new SelectListItem() { Text = t1.ime, Value = (t1.ID).ToString() });
+            }
             return View(await _context.Igrac.ToListAsync());
         }
 
@@ -39,13 +47,27 @@ namespace UETFA.Controllers
             {
                 return NotFound();
             }
-
+            ViewBag.nazivi1 = new List<SelectListItem>();
+            List<Igrac> igraci = _context.Igrac.ToList();
+            List<Tim> timovi = _context.Tim.ToList();
+            foreach (var u in igraci)
+            {
+                if (u.ID == id)
+                {
+                    Tim t1 = timovi.Find(t => t.ID == u.TimID);
+                    ViewBag.nazivi1.Add(new SelectListItem() { Text = t1.ime, Value = (t1.ID).ToString() });
+                }
+            }
             return View(igrac);
         }
 
         // GET: Igraci/Create
         public IActionResult Create()
         {
+            ViewBag.Timovi = new List<SelectListItem>();
+            List<Tim> timovi = _context.Tim.ToList();
+            foreach (var p in timovi)
+                ViewBag.Timovi.Add(new SelectListItem() { Text = p.ime, Value = p.ID.ToString() });
             return View();
         }
 
@@ -78,6 +100,10 @@ namespace UETFA.Controllers
             {
                 return NotFound();
             }
+            ViewBag.Timovi = new List<SelectListItem>();
+            List<Tim> timovi = _context.Tim.ToList();
+            foreach (var p in timovi)
+                ViewBag.Timovi.Add(new SelectListItem() { Text = p.ime, Value = p.ID.ToString() });
             return View(igrac);
         }
 
@@ -130,7 +156,17 @@ namespace UETFA.Controllers
             {
                 return NotFound();
             }
-
+            ViewBag.nazivi1 = new List<SelectListItem>();
+            List<Igrac> igraci = _context.Igrac.ToList();
+            List<Tim> timovi = _context.Tim.ToList();
+            foreach (var u in igraci)
+            {
+                if (u.ID == id)
+                {
+                    Tim t1 = timovi.Find(t => t.ID == u.TimID);
+                    ViewBag.nazivi1.Add(new SelectListItem() { Text = t1.ime, Value = (t1.ID).ToString() });
+                }
+                }
             return View(igrac);
         }
 

@@ -51,6 +51,20 @@ namespace UETFA.Controllers
             {
                 return NotFound();
             }
+            ViewBag.nazivi1 = new List<SelectListItem>();
+            ViewBag.nazivi2 = new List<SelectListItem>();
+            List<Utakmica> utakmice = _context.Utakmica.ToList();
+            List<Tim> timovi = _context.Tim.ToList();
+            foreach (var u in utakmice)
+            {
+                if (u.ID == id)
+                {
+                    Tim t1 = timovi.Find(t => t.ID == u.idTima1);
+                    Tim t2 = timovi.Find(t => t.ID == u.idTima2);
+                    ViewBag.nazivi1.Add(new SelectListItem() { Text = t1.ime, Value = (t1.ID).ToString() });
+                    ViewBag.nazivi2.Add(new SelectListItem() { Text = t2.ime, Value = (t2.ID).ToString() });
+                }
+            }
 
             return View(utakmica);
         }
@@ -215,7 +229,20 @@ namespace UETFA.Controllers
             {
                 return NotFound();
             }
-
+            ViewBag.nazivi1 = new List<SelectListItem>();
+            ViewBag.nazivi2 = new List<SelectListItem>();
+            List<Utakmica> utakmice = _context.Utakmica.ToList();
+            List<Tim> timovi = _context.Tim.ToList();
+            foreach (var u in utakmice)
+            {
+                if (u.ID == id)
+                {
+                    Tim t1 = timovi.Find(t => t.ID == u.idTima1);
+                    Tim t2 = timovi.Find(t => t.ID == u.idTima2);
+                    ViewBag.nazivi1.Add(new SelectListItem() { Text = t1.ime, Value = (t1.ID).ToString() });
+                    ViewBag.nazivi2.Add(new SelectListItem() { Text = t2.ime, Value = (t2.ID).ToString() });
+                }
+            }
             return View(utakmica);
         }
 
