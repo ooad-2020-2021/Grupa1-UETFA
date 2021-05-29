@@ -1,52 +1,57 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using System.IO;
-using System.Net;
-using System.Net.Http;
-using System.Web;
-using System.Web.Http;
-using System.Reflection;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
+using UETFA.Data;
+using UETFA.Models;
 
 namespace UETFA.Controllers
 {
-
-    public class LiveStreamController : ApiController
+    public class PomocnaLS
     {
-        public HttpResponseMessage GetVideoContent()
-        {
-            var httpResponce = Request.CreateResponse();
-            httpResponce.Content = new PushStreamContent((Action<Stream, HttpContent, TransportContext>)WriteContentToStream);
-            return httpResponce;
-        }
-        public async void WriteContentToStream(Stream outputStream, HttpContent content, TransportContext transportContext)
-        {
-            //path of file which we have to read//
-            var filePath = Path.GetDirectoryName(Assembly.GetEntryAssembly().Location) + "/live.mp4";
-            //here set the size of buffer, you can set any size  
-            int bufferSize = 1000;
-            byte[] buffer = new byte[bufferSize];
-            //here we re using FileStream to read file from server//  
-            using (var fileStream = new FileStream(path: filePath, mode: FileMode.Open, access: FileAccess.Read, share: FileShare.Read))
-            {
-                int totalSize = (int)fileStream.Length;
-                /*here we are saying read bytes from file as long as total size of file 
+        public string Tim1 { get; set; }
+        public string Tim2 { get; set; }
+        public string Rezultat { get; set; }
+        public string FileName { get; set; }
+    }
+    public class LiveStreamController : Controller
+    {
+        private readonly ApplicationDbContext _context;
 
-                is greater then 0*/
-                while (totalSize > 0)
-                {
-                    int count = totalSize > bufferSize ? bufferSize : totalSize;
-                    //here we are reading the buffer from orginal file  
-                    int sizeOfReadedBuffer = fileStream.Read(buffer, 0, count);
-                    //here we are writing the readed buffer to output//  
-                    await outputStream.WriteAsync(buffer, 0, sizeOfReadedBuffer);
-                    //and finally after writing to output stream decrementing it to total size of file.  
-                    totalSize -= sizeOfReadedBuffer;
-                }
-            }
+        public LiveStreamController(ApplicationDbContext context)
+        {
+            _context = context;
+        }
+
+        // GET: LiveStream
+        // Potrebno promijeniti Index2 u Index
+        public IActionResult Index2(int id)
+        {
+            PomocnaLS info = new PomocnaLS();
+            Utakmica trenutna = _context.LiveStream.ToList().Find(ls => ls.ID == id).utakmica;
+            info.Tim1 = _context.Tim.ToList().Find(t => t.ID == trenutna.idTima1).ime;
+            info.Tim2 = _context.Tim.ToList().Find(t => t.ID == trenutna.idTima2).ime;
+            info.Rezultat = trenutna.rezTim1 + " : " + trenutna.rezTim2;
+            // ukoliko budemo stvarno htjeli mijenjati streamove, klasa LiveStream će imati svoj video
+            // sad taj atribut ne postoji pa je zato zakomentarisan
+            // info.FileName = _context.LiveStream.ToList().Find(ls => ls.ID == id).Filename;
+            info.FileName = "ID_YOUTUBE_KANALA";
+            return View(info);
+        }
+
+        // testna funkcija za predefinisane podatke
+        public IActionResult Index()
+        {
+            PomocnaLS info = new PomocnaLS();
+            info.Tim1 = "FK Željezničar";
+            info.Tim2 = "FK Sarajevo";
+            info.Rezultat = "1 : 0";
+            // filename je ID kanala koji vrši livestreamanje na YouTube
+            info.FileName = "UCOQMD-IluHFLXBRpAMUE-EA";
+            return View(info);
         }
     }
 }

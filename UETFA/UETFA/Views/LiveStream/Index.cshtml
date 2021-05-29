@@ -1,0 +1,19 @@
+﻿@model UETFA.Controllers.PomocnaLS
+
+@{
+    ViewData["Title"] = Model.Tim1 + " " + Model.Rezultat + " " + Model.Tim2;
+}
+<div style="text-align: center; margin: auto">
+    <h1>@Html.DisplayFor(model => model.Tim1) @Html.DisplayFor(model => model.Rezultat) @Html.DisplayFor(model => model.Tim2)</h1>
+    <br />
+    <iframe 
+            type="text/html" 
+            width="1080" 
+            height="480" 
+            src="https://www.youtube.com/embed/live_stream?channel=@Model.FileName&autoplay=1&mute=1"
+            frameborder="0"
+            allowfullscreen
+            allow='autoplay'>
+
+    </iframe>
+</div>
