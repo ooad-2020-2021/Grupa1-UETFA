@@ -164,7 +164,7 @@ namespace UETFA.Controllers
                     var utakmica =
                     await _context.Utakmica.Where(m => m.ID == id).ToListAsync();
 
-            if (utakmica[0].statusUtakmice != "zavrsena")
+            if (utakmica[0].statusUtakmice != "Zavrsena")
             {
 
                 var tim1 =
@@ -205,7 +205,7 @@ namespace UETFA.Controllers
                     tim1[0].brojNerjesenih++;
                     tim2[0].brojNerjesenih++;
                 }
-                utakmica[0].statusUtakmice = "zavrsena";
+                utakmica[0].statusUtakmice = "Zavrsena";
                 _context.Tim.Update(tim1[0]);
                 await _context.SaveChangesAsync();
                 _context.Tim.Update(tim2[0]);

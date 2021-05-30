@@ -28,22 +28,22 @@ namespace UETFA.Controllers
 
         // GET: LiveStream
         // Potrebno promijeniti Index2 u Index
-        public IActionResult Index2(int id)
+        public IActionResult Index(int id)
         {
             PomocnaLS info = new PomocnaLS();
-            Utakmica trenutna = _context.LiveStream.ToList().Find(ls => ls.ID == id).utakmica;
+            Utakmica trenutna = _context.Utakmica.ToList().Find(ls => ls.statusUtakmice == "U toku");
             info.Tim1 = _context.Tim.ToList().Find(t => t.ID == trenutna.idTima1).ime;
             info.Tim2 = _context.Tim.ToList().Find(t => t.ID == trenutna.idTima2).ime;
             info.Rezultat = trenutna.rezTim1 + " : " + trenutna.rezTim2;
             // ukoliko budemo stvarno htjeli mijenjati streamove, klasa LiveStream će imati svoj video
             // sad taj atribut ne postoji pa je zato zakomentarisan
             // info.FileName = _context.LiveStream.ToList().Find(ls => ls.ID == id).Filename;
-            info.FileName = "ID_YOUTUBE_KANALA";
+            info.FileName = "UCSJ4gkVC6NrvII8umztf0Ow";
             return View(info);
         }
 
         // testna funkcija za predefinisane podatke
-        public IActionResult Index()
+        public IActionResult Index2()
         {
             PomocnaLS info = new PomocnaLS();
             info.Tim1 = "FK Željezničar";

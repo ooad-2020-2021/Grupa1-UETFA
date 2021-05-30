@@ -28,7 +28,7 @@
             <th>
                 Rezultat
             </th>
-
+            <th>LiveStream</th>
             <th></th>
         </tr>
     </thead>
@@ -38,32 +38,38 @@
         {
             @foreach (var item in Model)
             {
-                <tr>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.statusUtakmice)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.datumUtakmice)
-                    </td>
-                    <td>
-                        @ViewBag.nazivi1[i].Text
-                    </td>
-                    <td>
-                        @ViewBag.nazivi2[i].Text
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.rezTim1) : @Html.DisplayFor(modelItem => item.rezTim2)
-                    </td>
-                    <td>
-                        @if (item.statusUtakmice != "zavrsena")
-                        {
-                            <a asp-action="Edit" asp-route-id="@item.ID">Edit</a>} |                        |
-                        <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                        @if (item.statusUtakmice != "zavrsena")
-                        {
-                            <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>}
-                        </td>
-                </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.statusUtakmice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.datumUtakmice)
+            </td>
+            <td>
+                @ViewBag.nazivi1[i].Text
+            </td>
+            <td>
+                @ViewBag.nazivi2[i].Text
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.rezTim1) : @Html.DisplayFor(modelItem => item.rezTim2)
+            </td>
+            <td>
+                @if (item.statusUtakmice == "U toku")
+                {
+                    @Html.ActionLink("Gledaj", "Index", "LiveStream")
+                }
+            </td>
+            <td>
+                @if (item.statusUtakmice != "Zavrsena")
+                {
+                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a>} |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                @if (item.statusUtakmice != "Zavrsena")
+                {
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>}
+            </td>
+        </tr>
                 i++;
                         }
         }
