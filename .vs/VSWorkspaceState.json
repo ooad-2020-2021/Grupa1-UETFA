@@ -1,16 +1,8 @@
 {
   "ExpandedNodes": [
     "",
-    "\\UETFA",
-    "\\UETFA\\UETFA",
-    "\\UETFA\\UETFA\\Controllers",
-    "\\UETFA\\UETFA\\Models",
-    "\\UETFA\\UETFA\\Properties",
-    "\\UETFA\\UETFA\\Views",
-    "\\UETFA\\UETFA\\Views\\Timovi",
-    "\\UETFA\\UETFA\\Views\\Utakmica",
-    "\\UETFA\\UETFA\\wwwroot\\css"
+    "\\UETFA"
   ],
-  "SelectedNode": "\\UETFA\\UETFA\\Views\\Timovi\\Details.cshtml",
+  "SelectedNode": "\\UETFA\\UETFA.sln",
   "PreviewInSolutionExplorer": false
 }

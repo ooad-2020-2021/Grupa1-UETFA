@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Hana\\source\\repos\\Grupa1-UETFA\\UETFA\\UETFA\\UETFA.csproj": {}
+    "C:\\Users\\Hana\\Source\\Repos\\Grupa1-UETFA\\UETFA\\UETFA\\UETFA.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Hana\\source\\repos\\Grupa1-UETFA\\UETFA\\UETFA\\UETFA.csproj": {
+    "C:\\Users\\Hana\\Source\\Repos\\Grupa1-UETFA\\UETFA\\UETFA\\UETFA.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Hana\\source\\repos\\Grupa1-UETFA\\UETFA\\UETFA\\UETFA.csproj",
+        "projectUniqueName": "C:\\Users\\Hana\\Source\\Repos\\Grupa1-UETFA\\UETFA\\UETFA\\UETFA.csproj",
         "projectName": "UETFA",
-        "projectPath": "C:\\Users\\Hana\\source\\repos\\Grupa1-UETFA\\UETFA\\UETFA\\UETFA.csproj",
+        "projectPath": "C:\\Users\\Hana\\Source\\Repos\\Grupa1-UETFA\\UETFA\\UETFA\\UETFA.csproj",
         "packagesPath": "C:\\Users\\Hana\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Hana\\source\\repos\\Grupa1-UETFA\\UETFA\\UETFA\\obj\\",
+        "outputPath": "C:\\Users\\Hana\\Source\\Repos\\Grupa1-UETFA\\UETFA\\UETFA\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Hana\\AppData\\Roaming\\NuGet\\NuGet.Config",

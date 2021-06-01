@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "VKhuWDyaggeuCF2xfBWg44oTv6qYpOCpCOG3MS9ajL5spNYFpL0Rmyvxp+pspWIYtxKvfaU9+1UUPM0G5izlyw==",
+  "dgSpecHash": "lPT6DLed5CAB/trWQ7XNKL9/rnnJyfLWpzV7zuRCsl96dqZOYtQ0hrsbox9hkP/rtBZYBS/2xJSpCDc0XtwodQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Hana\\source\\repos\\Grupa1-UETFA\\UETFA\\UETFA\\UETFA.csproj",
+  "projectFilePath": "C:\\Users\\Hana\\Source\\Repos\\Grupa1-UETFA\\UETFA\\UETFA\\UETFA.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Hana\\.nuget\\packages\\microsoft.aspnet.webapi.client\\5.2.6\\microsoft.aspnet.webapi.client.5.2.6.nupkg.sha512",
     "C:\\Users\\Hana\\.nuget\\packages\\microsoft.aspnetcore.authentication.abstractions\\2.2.0\\microsoft.aspnetcore.authentication.abstractions.2.2.0.nupkg.sha512",

@@ -38,7 +38,7 @@ namespace UETFA.Controllers
             // ukoliko budemo stvarno htjeli mijenjati streamove, klasa LiveStream će imati svoj video
             // sad taj atribut ne postoji pa je zato zakomentarisan
             // info.FileName = _context.LiveStream.ToList().Find(ls => ls.ID == id).Filename;
-            info.FileName = "UCSJ4gkVC6NrvII8umztf0Ow";
+            info.FileName = "UCsDpnPJARbH4E0JgWjSDaSA";
             return View(info);
         }
 
