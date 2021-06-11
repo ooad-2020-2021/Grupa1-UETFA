@@ -34,8 +34,38 @@ namespace UETFA.Controllers
                 ViewBag.nazivi2.Add(new SelectListItem() { Text = t2.ime, Value = (t2.ID).ToString() });
 
             }
-            return View(await _context.Utakmica.ToListAsync());
+            var statusSort =
+                await _context.Utakmica.OrderByDescending(m => m.statusUtakmice == "U toku").ThenBy(m => m.statusUtakmice == "Zavrsena").ToListAsync();
+
+            return View(statusSort);
         }
+
+        public async Task<IActionResult> Notifikacije()
+        {
+            ViewBag.nazivi1 = new List<SelectListItem>();
+            ViewBag.nazivi2 = new List<SelectListItem>();
+            List<Utakmica> utakmice = _context.Utakmica.ToList();
+            List<Tim> timovi = _context.Tim.ToList();
+            foreach (var u in utakmice)
+            {
+                if(u.statusUtakmice == "Zavrsena")
+                {
+                Tim t1 = timovi.Find(t => t.ID == u.idTima1);
+                Tim t2 = timovi.Find(t => t.ID == u.idTima2);
+                ViewBag.nazivi1.Add(new SelectListItem() { Text = t1.ime, Value = (t1.ID).ToString() });
+                ViewBag.nazivi2.Add(new SelectListItem() { Text = t2.ime, Value = (t2.ID).ToString() });
+
+                }
+                
+            }
+
+            var notifikacija =
+                await _context.Utakmica.Where(m => m.statusUtakmice == "Zavrsena").ToListAsync();
+
+            return View(notifikacija);
+        }
+
+
 
         // GET: Utakmice/Details/5
         public async Task<IActionResult> Details(int? id)

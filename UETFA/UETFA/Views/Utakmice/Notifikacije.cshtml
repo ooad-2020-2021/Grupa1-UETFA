@@ -1,0 +1,60 @@
+﻿@model IEnumerable<UETFA.Models.Utakmica>
+
+@{
+    ViewData["Title"] = "Notifikacije";
+}
+<span style="color:white;"> </span>
+<h1 style="color:white;">Notifikacije o zavrsenim utakmicama</h1>
+
+
+<table class="table">
+    <thead>
+        <tr style="color:white" class="text-center">
+            <th>
+                Obavijest
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.datumUtakmice)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.idTima1)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.idTima2)
+            </th>
+
+            <th>
+                Rezultat
+            </th>
+
+        </tr>
+    </thead>
+    <tbody>
+        @for (var i = 0; i < ViewBag.nazivi1.Count; i++)
+
+        {
+            @foreach (var item in Model.Reverse())
+            {
+        <tr style="color:white" class="text-center">
+            <td>
+                Zavrsena je utakmica
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.datumUtakmice)
+            </td>
+            <td>
+                @ViewBag.nazivi1[i].Text
+            </td>
+            <td>
+                @ViewBag.nazivi2[i].Text
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.rezTim1) : @Html.DisplayFor(modelItem => item.rezTim2)
+            </td>
+
+        </tr>
+                i++;
+            }
+        }
+    </tbody>
+</table>

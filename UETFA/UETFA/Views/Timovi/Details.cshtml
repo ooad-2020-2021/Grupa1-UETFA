@@ -4,9 +4,10 @@
     ViewData["Title"] = "Details";
 }
 
-<h1>Details</h1>
+<span style="color:white;"> </span>
+<h1 style="color:white;">Detalji Tima</h1>
 
-<div>
+<div style="color:white;">
     <h4>Tim</h4>
     <hr />
     <dl class="row">
@@ -71,14 +72,15 @@
     <a asp-action="Index">Back to List</a>
 </div>
 
-<h1>Igrači</h1>
+<span style="color:white;"> </span>
+<h1 style="color:white;">Igrači Tima</h1>
 
 <p>
     <a asp-action="CreateIgraci">Dodaj igrača</a>
 </p>
 <table class="table">
     <thead>
-        <tr>
+        <tr style="color:white" class="text-center">
             <th>
                 @Html.DisplayNameFor(model => model.ElementAt(0).Key.ElementAt(0).imePrezime)
             </th>
@@ -96,11 +98,11 @@
             </th>
             <th></th>
         </tr>
- </thead>
- <tbody>
+    </thead>
+    <tbody>
         @foreach (var item in Model.ElementAt(0).Key)
         {
-            <tr>
+            <tr style="color:white" class="text-center">
                 <td>
                     @Html.DisplayFor(modelItem => item.imePrezime)
                 </td>

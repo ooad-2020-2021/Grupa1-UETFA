@@ -30,8 +30,23 @@ namespace UETFA.Controllers
                 Tim t1 = timovi.Find(t => t.ID == u.TimID);
                 ViewBag.nazivi1.Add(new SelectListItem() { Text = t1.ime, Value = (t1.ID).ToString() });
             }
-            return View(await _context.Igrac.ToListAsync());
+            return View(await _context.Igrac.OrderByDescending(m => m.brojGolova).ToListAsync());
         }
+
+        // GET: Asistenti
+        public async Task<IActionResult> Asistenti()
+        {
+            ViewBag.nazivi1 = new List<SelectListItem>();
+            List<Igrac> igraci = _context.Igrac.ToList();
+            List<Tim> timovi = _context.Tim.ToList();
+            foreach (var u in igraci)
+            {
+                Tim t1 = timovi.Find(t => t.ID == u.TimID);
+                ViewBag.nazivi1.Add(new SelectListItem() { Text = t1.ime, Value = (t1.ID).ToString() });
+            }
+            return View(await _context.Igrac.OrderByDescending(m => m.brojAsistencija).ToListAsync());
+        }
+
 
         // GET: Igraci/Details/5
         public async Task<IActionResult> Details(int? id)

@@ -10,8 +10,8 @@ namespace UETFA.Models
     public class Tim
     {
         public int ID { get; set; }
-        [DisplayName("Ime")]
         public int TimID { get; set; }
+        [DisplayName("Ime")]
         public string ime { get; set; }
         [DisplayName("Dati Golovi")]
         public int datiGolovi { get; set; }

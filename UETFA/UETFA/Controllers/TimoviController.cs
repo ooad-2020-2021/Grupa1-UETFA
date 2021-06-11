@@ -168,6 +168,10 @@ namespace UETFA.Controllers
         // GET: Timovi/CreateIgrac
         public IActionResult CreateIgraci()
         {
+            ViewBag.Timovi = new List<SelectListItem>();
+            List<Tim> timovi = _context.Tim.ToList();
+            foreach (var p in timovi)
+                ViewBag.Timovi.Add(new SelectListItem() { Text = p.ime, Value = p.ID.ToString() });
             return View();
         }
 

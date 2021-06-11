@@ -4,14 +4,15 @@
     ViewData["Title"] = "Tabela";
 }
 
-<h1>Tabela</h1>
+<span style="color:white;"> </span>
+<h1 style="color:white;">Tabela</h1>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a asp-action="Create">Dodaj novi Tim</a>
 </p>
 <table class="table">
     <thead>
-        <tr>
+        <tr style="color:white" class="text-center">
             <th>
                 @Html.DisplayNameFor(model => model.ime)
             </th>
@@ -43,8 +44,9 @@
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
+        @foreach (var item in Model)
+        {
+        <tr style="color:white" class="text-center">
             <td>
                 @Html.DisplayFor(modelItem => item.ime)
             </td>
@@ -78,6 +80,6 @@
                 <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
             </td>
         </tr>
-}
+        }
     </tbody>
 </table>
