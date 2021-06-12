@@ -1,0 +1,49 @@
+﻿@model UETFA.Models.Premium
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<span style="color:white;"> </span>
+
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+               
+                    <label style="color:white" asp-for="imeVlasnikaKartice" class="control-label"></label>
+                    <input  asp-for="imeVlasnikaKartice" class="form-control" />
+                    <span style="color:white" asp-validation-for="imeVlasnikaKartice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label style="color:white" asp-for="brojKartice" class="control-label"></label>
+                <input  asp-for="brojKartice" class="form-control" />
+                <span style="color:white" asp-validation-for="brojKartice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label style="color:white" asp-for="cvc" class="control-label"></label>
+                <input asp-for="cvc" class="form-control" />
+                <span style="color:white" asp-validation-for="cvc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label style="color:white" asp-for="datum" class="control-label"></label>
+                <input  asp-for="datum" class="form-control" />
+                <span style="color:white" asp-validation-for="datum" class="text-danger"></span>
+                </tr>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Potvrdi" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Nazad</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
