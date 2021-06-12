@@ -12,14 +12,14 @@
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-               
-                    <label style="color:white" asp-for="imeVlasnikaKartice" class="control-label"></label>
-                    <input  asp-for="imeVlasnikaKartice" class="form-control" />
-                    <span style="color:white" asp-validation-for="imeVlasnikaKartice" class="text-danger"></span>
+
+                <label style="color:white" asp-for="imeVlasnikaKartice" class="control-label"></label>
+                <input asp-for="imeVlasnikaKartice" class="form-control" />
+                <span style="color:white" asp-validation-for="imeVlasnikaKartice" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label style="color:white" asp-for="brojKartice" class="control-label"></label>
-                <input  asp-for="brojKartice" class="form-control" />
+                <input asp-for="brojKartice" class="form-control" />
                 <span style="color:white" asp-validation-for="brojKartice" class="text-danger"></span>
             </div>
             <div class="form-group">
@@ -29,9 +29,14 @@
             </div>
             <div class="form-group">
                 <label style="color:white" asp-for="datum" class="control-label"></label>
-                <input  asp-for="datum" class="form-control" />
+                <input asp-for="datum" class="form-control" />
                 <span style="color:white" asp-validation-for="datum" class="text-danger"></span>
                 </tr>
+            </div>
+            <div class="form-group">
+                <select asp-for="IDKor" asp-items="@ViewBag.id">
+                    <option>Odaberite status:</option>
+                </select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Potvrdi" class="btn btn-primary" />

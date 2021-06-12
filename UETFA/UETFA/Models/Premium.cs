@@ -17,5 +17,7 @@ namespace UETFA.Models
         public int cvc { get; set; }
         [DisplayName("Datum isteka kartice")]
         public DateTime datum { get; set; }
+
+        public string IDKor { get; set; }
     }
 }

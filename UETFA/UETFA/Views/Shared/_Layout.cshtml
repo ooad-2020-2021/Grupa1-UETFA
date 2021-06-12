@@ -49,10 +49,14 @@
                             <a class="nav-link text-dark" asp-area="" asp-controller="Utakmice" asp-action="Index">Utakmica</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Utakmice" asp-action="Notifikacije">Notifikacije</a>
+                               @if (User.IsInRole("Admin") || User.IsInRole("Premium"))
+                               {
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Utakmice" asp-action="Notifikacije">Notifikacije</a>}
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Premiums" asp-action="Index">Postani Premium</a>
+                            @if (!(User.IsInRole("Premium")))
+                            {
+                            <a class="nav-link text-dark" asp-area="" asp-controller="Premiums" asp-action="Index">Postani Premium</a> }
                         </li>
                     </ul>
                 </div>

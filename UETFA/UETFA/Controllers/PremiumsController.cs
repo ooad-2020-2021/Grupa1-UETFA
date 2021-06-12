@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -51,6 +53,12 @@ namespace UETFA.Controllers
         // GET: Premiums/Create
         public IActionResult Create()
         {
+ 
+            string currentUserId = User.Identity.Name;
+            ViewBag.id = new List<SelectListItem>();
+            ViewBag.id.Add(new SelectListItem() { Text = currentUserId, Value = currentUserId.ToString() });
+
+
             return View();
         }
 
@@ -59,8 +67,9 @@ namespace UETFA.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,imeVlasnikaKartice,brojKartice,cvc,datum")] Premium premium)
+        public async Task<IActionResult> Create([Bind("ID,imeVlasnikaKartice,brojKartice,cvc,datum,IDKor")] Premium premium)
         {
+
             if (ModelState.IsValid)
             {
                 _context.Add(premium);
@@ -91,7 +100,7 @@ namespace UETFA.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,imeVlasnikaKartice,brojKartice,cvc,datum")] Premium premium)
+        public async Task<IActionResult> Edit(int id, [Bind("ID,imeVlasnikaKartice,brojKartice,cvc,datum,IDKor")] Premium premium)
         {
             if (id != premium.ID)
             {

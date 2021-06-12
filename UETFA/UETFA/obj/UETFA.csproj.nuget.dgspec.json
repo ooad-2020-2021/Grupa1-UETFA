@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\korisnik\\Source\\Repos\\Grupa1-UETFA\\UETFA\\UETFA\\UETFA.csproj": {}
+    "C:\\Users\\Hana\\source\\repos\\Grupa1-UETFApremium\\UETFA\\UETFA\\UETFA.csproj": {}
   },
   "projects": {
-    "C:\\Users\\korisnik\\Source\\Repos\\Grupa1-UETFA\\UETFA\\UETFA\\UETFA.csproj": {
+    "C:\\Users\\Hana\\source\\repos\\Grupa1-UETFApremium\\UETFA\\UETFA\\UETFA.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\korisnik\\Source\\Repos\\Grupa1-UETFA\\UETFA\\UETFA\\UETFA.csproj",
+        "projectUniqueName": "C:\\Users\\Hana\\source\\repos\\Grupa1-UETFApremium\\UETFA\\UETFA\\UETFA.csproj",
         "projectName": "UETFA",
-        "projectPath": "C:\\Users\\korisnik\\Source\\Repos\\Grupa1-UETFA\\UETFA\\UETFA\\UETFA.csproj",
-        "packagesPath": "C:\\Users\\korisnik\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\korisnik\\Source\\Repos\\Grupa1-UETFA\\UETFA\\UETFA\\obj\\",
+        "projectPath": "C:\\Users\\Hana\\source\\repos\\Grupa1-UETFApremium\\UETFA\\UETFA\\UETFA.csproj",
+        "packagesPath": "C:\\Users\\Hana\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Hana\\source\\repos\\Grupa1-UETFApremium\\UETFA\\UETFA\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\korisnik\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Hana\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -46,11 +46,11 @@
             },
             "Microsoft.AspNetCore.Identity.EntityFrameworkCore": {
               "target": "Package",
-              "version": "[3.1.13, )"
+              "version": "[3.1.15, )"
             },
             "Microsoft.AspNetCore.Identity.UI": {
               "target": "Package",
-              "version": "[3.1.13, )"
+              "version": "[3.1.15, )"
             },
             "Microsoft.AspNetCore.Mvc.WebApiCompatShim": {
               "target": "Package",
@@ -93,7 +93,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.202\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.203\\RuntimeIdentifierGraph.json"
         }
       }
     }

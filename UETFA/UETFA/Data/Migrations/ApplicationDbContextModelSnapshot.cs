@@ -249,6 +249,24 @@ namespace UETFA.Data.Migrations
                     b.ToTable("Igrac");
                 });
 
+            modelBuilder.Entity("UETFA.Models.Korisnik", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("ime")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("ID");
+
+                    b.ToTable("Korisnik");
+                });
+
             modelBuilder.Entity("UETFA.Models.LiveStream", b =>
                 {
                     b.Property<int>("ID")
@@ -279,6 +297,9 @@ namespace UETFA.Data.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<string>("IDKor")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("brojKartice")
                         .HasColumnType("int");

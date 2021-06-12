@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
 using System.Text;
+using UETFA.Models;
 
 namespace UETFA.Data
 {
@@ -20,5 +21,6 @@ namespace UETFA.Data
         public DbSet<UETFA.Models.Sudija> Sudija { get; set; }
         public DbSet<UETFA.Models.Tim> Tim { get; set; }
         public DbSet<UETFA.Models.Utakmica> Utakmica { get; set; }
+        public DbSet<UETFA.Models.Korisnik> Korisnik { get; set; }
     }
 }
