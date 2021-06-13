@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -20,12 +21,14 @@ namespace UETFA.Controllers
         }
 
         // GET: Timovi
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             return View(await _context.Tim.OrderByDescending(o => o.bodovi).ToListAsync());
         }
 
         // GET: Timovi/Details/5
+        [Authorize(Roles = "Admin, Premium")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -48,6 +51,7 @@ namespace UETFA.Controllers
         }
 
         // GET: Timovi/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             return View();
@@ -58,6 +62,7 @@ namespace UETFA.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([Bind("ID,ime,datiGolovi,primljeniGolovi,brojOdigranihUtakmica,trener,brojPobjeda,brojNeriješenih,brojPoraza,bodovi")] Tim tim)
         {
             if (ModelState.IsValid)
@@ -70,6 +75,7 @@ namespace UETFA.Controllers
         }
 
         // GET: Timovi/Edit/5
+        [Authorize(Roles = "Admin, Sudija")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -90,6 +96,7 @@ namespace UETFA.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Admin, Sudija")]
         public async Task<IActionResult> Edit(int id, [Bind("ID,ime,datiGolovi,primljeniGolovi,brojOdigranihUtakmica,trener,brojPobjeda,brojNeriješenih,brojPoraza,bodovi")] Tim tim)
         {
             if (id != tim.ID)
@@ -121,6 +128,7 @@ namespace UETFA.Controllers
         }
 
         // GET: Timovi/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)

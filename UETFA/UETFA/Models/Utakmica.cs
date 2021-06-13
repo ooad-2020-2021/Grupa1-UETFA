@@ -29,10 +29,9 @@ namespace UETFA.Models
         public int rezTim2 { get; set; }
         [NotMapped]
         public List<Igrac> strijelci { get; set; }
-
+        public string Sudija { get; set; }
         [NotMapped]
         public List<Igrac> asistenti { get; set; }
-
 
     }
 }

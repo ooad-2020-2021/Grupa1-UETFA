@@ -26,7 +26,9 @@
             <th>
                 @Html.DisplayNameFor(model => model.idTima2)
             </th>
-
+            <th>
+                Sudija
+            </th>
             <th>
                 Rezultat
             </th>
@@ -40,38 +42,42 @@
         {
             @foreach (var item in Model)
             {
-                <tr style="color:white" class="text-center">
-                    <td>
-                        @Html.DisplayFor(modelItem => item.statusUtakmice)
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.datumUtakmice)
-                    </td>
-                    <td>
-                        @ViewBag.nazivi1[i].Text
-                    </td>
-                    <td>
-                        @ViewBag.nazivi2[i].Text
-                    </td>
-                    <td>
-                        @Html.DisplayFor(modelItem => item.rezTim1) : @Html.DisplayFor(modelItem => item.rezTim2)
-                    </td>
-                    <td>
-                        @if (item.statusUtakmice == "U toku")
-                        {
-                            @Html.ActionLink("Gledaj", "Index", "LiveStream")
-                        }
-                    </td>
-                    <td>
-                        @if (item.statusUtakmice != "Zavrsena")
-                        {
-                            <a asp-action="Edit" asp-route-id="@item.ID">Edit</a>} |
-                        <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                        @if (item.statusUtakmice != "Zavrsena")
-                        {
-                            <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>}
-                    </td>
-                </tr>
+        <tr style="color:white" class="text-center">
+            <td>
+                @Html.DisplayFor(modelItem => item.statusUtakmice)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.datumUtakmice)
+            </td>
+            <td>
+                @ViewBag.nazivi1[i].Text
+            </td>
+            <td>
+                @ViewBag.nazivi2[i].Text
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sudija)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.rezTim1) : @Html.DisplayFor(modelItem => item.rezTim2)
+            </td>
+            <td>
+                @if (item.statusUtakmice == "U toku")
+                {
+                    @Html.ActionLink("Gledaj", "Index", "LiveStream")
+                }
+            </td>
+            <td>
+                @if (item.statusUtakmice != "Zavrsena")
+                {@if (User.Identity.Name == item.Sudija)
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.ID">Edit</a>}} |
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                @if (item.statusUtakmice != "Zavrsena")
+                {
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>}
+            </td>
+        </tr>
                 i++;
             }
         }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -20,6 +21,7 @@ namespace UETFA.Controllers
         }
 
         // GET: Utakmice
+        [Authorize]
         public async Task<IActionResult> Index()
         {
             ViewBag.nazivi1 = new List<SelectListItem>();
@@ -39,7 +41,7 @@ namespace UETFA.Controllers
 
             return View(statusSort);
         }
-
+        [Authorize(Roles = "Admin, Premium")]
         public async Task<IActionResult> Notifikacije()
         {
             ViewBag.nazivi1 = new List<SelectListItem>();
@@ -68,6 +70,7 @@ namespace UETFA.Controllers
 
 
         // GET: Utakmice/Details/5
+        [Authorize(Roles = "Admin, Premium")]
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -100,8 +103,10 @@ namespace UETFA.Controllers
         }
 
         // GET: Utakmice/Create
+        [Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
+            ViewBag.Sudije = new List<SelectListItem>();
             ViewBag.Timovi = new List<SelectListItem>();
             List<Tim> timovi = _context.Tim.ToList();
             foreach (var p in timovi)
@@ -117,7 +122,8 @@ namespace UETFA.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,statusUtakmice,datumUtakmice,idTima1,idTima2,rezTim1,rezTim2")] Utakmica utakmica)
+        [Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Create([Bind("ID,statusUtakmice,datumUtakmice,idTima1,idTima2,rezTim1,rezTim2,Sudija")] Utakmica utakmica)
         {
             if (ModelState.IsValid)
             {
@@ -129,6 +135,7 @@ namespace UETFA.Controllers
         }
 
         // GET: Utakmice/Edit/5
+        [Authorize(Roles = "Admin, Sudija")]
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -156,7 +163,8 @@ namespace UETFA.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,statusUtakmice,datumUtakmice,idTima1,idTima2,rezTim1,rezTim2")] Utakmica utakmica)
+        [Authorize(Roles = "Admin, Sudija")]
+        public async Task<IActionResult> Edit(int id, [Bind("ID,statusUtakmice,datumUtakmice,idTima1,idTima2,rezTim1,rezTim2,Sudija")] Utakmica utakmica)
         {
             if (id != utakmica.ID)
             {
@@ -246,12 +254,13 @@ namespace UETFA.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-            
-     
+
+
 
 
 
         // GET: Utakmice/Delete/5
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)

@@ -75,12 +75,14 @@
                 @Html.DisplayFor(modelItem => item.brojPoraza)
             </td>
             <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                @if (User.IsInRole("Admin"))
-                {
-                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a> }
-                </td>
+                @if (User.IsInRole("Admin") || User.IsInRole("Sudija")) {
+                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a>} |
+                 @if (User.IsInRole("Admin") || User.IsInRole("Premium")) {
+                <a asp-action="Details" asp-route-id="@item.ID">Details</a> }|
+                 @if (User.IsInRole("Admin"))
+                 {
+                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a> }
+            </td>
         </tr>
         }
     </tbody>
