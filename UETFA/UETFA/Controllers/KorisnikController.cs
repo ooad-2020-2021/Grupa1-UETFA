@@ -26,15 +26,15 @@ namespace UETFA.Controllers
         }
 
         // GET: Korisnik/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? idKorisnika)
         {
-            if (id == null)
+            if (idKorisnika == null)
             {
                 return NotFound();
             }
 
             var korisnik = await _context.Korisnik
-                .FirstOrDefaultAsync(m => m.ID == id);
+                .FirstOrDefaultAsync(m => m.ID == idKorisnika);
             if (korisnik == null)
             {
                 return NotFound();
@@ -66,14 +66,14 @@ namespace UETFA.Controllers
         }
 
         // GET: Korisnik/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? idKorisnika)
         {
-            if (id == null)
+            if (idKorisnika == null)
             {
                 return NotFound();
             }
 
-            var korisnik = await _context.Korisnik.FindAsync(id);
+            var korisnik = await _context.Korisnik.FindAsync(idKorisnika);
             if (korisnik == null)
             {
                 return NotFound();
@@ -86,9 +86,9 @@ namespace UETFA.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,ime,Email")] Korisnik korisnik)
+        public async Task<IActionResult> Edit(int idKorisnika, [Bind("ID,ime,Email")] Korisnik korisnik)
         {
-            if (id != korisnik.ID)
+            if (idKorisnika != korisnik.ID)
             {
                 return NotFound();
             }
@@ -117,15 +117,15 @@ namespace UETFA.Controllers
         }
 
         // GET: Korisnik/Delete/5
-        public async Task<IActionResult> Delete(int? id)
+        public async Task<IActionResult> Delete(int? idKorisnika)
         {
-            if (id == null)
+            if (idKorisnika == null)
             {
                 return NotFound();
             }
 
             var korisnik = await _context.Korisnik
-                .FirstOrDefaultAsync(m => m.ID == id);
+                .FirstOrDefaultAsync(m => m.ID == idKorisnika);
             if (korisnik == null)
             {
                 return NotFound();
@@ -137,17 +137,17 @@ namespace UETFA.Controllers
         // POST: Korisnik/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int idKorisnika)
         {
-            var korisnik = await _context.Korisnik.FindAsync(id);
+            var korisnik = await _context.Korisnik.FindAsync(idKorisnika);
             _context.Korisnik.Remove(korisnik);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool KorisnikExists(int id)
+        private bool KorisnikExists(int idKorisnika)
         {
-            return _context.Korisnik.Any(e => e.ID == id);
+            return _context.Korisnik.Any(e => e.ID == idKorisnika);
         }
     }
 }

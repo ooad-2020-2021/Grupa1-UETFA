@@ -16,6 +16,8 @@ namespace UETFA.Controllers
 
     public class LiveStreammController : ApiController
     {
+
+        // VS predlaze uklanjanje bespotrebnog casta, ukoliko je zaista neophodan potrebno je da ostane
         public HttpResponseMessage GetVideoContent()
         {
             var httpResponce = Request.CreateResponse();

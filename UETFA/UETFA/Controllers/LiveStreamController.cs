@@ -29,7 +29,9 @@ namespace UETFA.Controllers
 
         // GET: LiveStream
         // Potrebno promijeniti Index2 u Index
-        [Authorize(Roles = "Admin, Premium")]
+        //[Authorize(Roles = "Admin, Premium")]
+
+        // Bespotreban parametar ukoliko ne bude promjene
         public IActionResult Index(int id)
         {
             PomocnaLS info = new PomocnaLS();

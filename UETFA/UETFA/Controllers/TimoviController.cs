@@ -29,22 +29,22 @@ namespace UETFA.Controllers
         }
 
         // GET: Timovi/Details/5
-        [Authorize(Roles = "Admin, Premium")]
-        public async Task<IActionResult> Details(int? id)
+        
+        public async Task<IActionResult> Details(int? idTima)
         {
-            if (id == null)
+            if (idTima == null)
             {
                 return NotFound();
             }
 
             var tim = await _context.Tim
-                .FirstOrDefaultAsync(m => m.ID == id);
+                .FirstOrDefaultAsync(m => m.ID == idTima);
             if (tim == null)
             {
                 return NotFound();
             }
             var igraci =
-                await _context.Igrac.Where(m => m.TimID == id).ToListAsync();
+                await _context.Igrac.Where(m => m.TimID == idTima).ToListAsync();
 
             var par = new Dictionary<List<Igrac>, Tim>();
             par.Add(igraci, tim);
@@ -52,7 +52,7 @@ namespace UETFA.Controllers
         }
 
         // GET: Timovi/Create
-        [Authorize(Roles = "Admin")]
+        
         public async Task<IActionResult> CreateAsync()
         {
             var timovi = await _context.Tim.ToListAsync();
@@ -69,7 +69,7 @@ namespace UETFA.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
+        
         public async Task<IActionResult> Create([Bind("ID,ime,datiGolovi,primljeniGolovi,brojOdigranihUtakmica,trener,brojPobjeda,brojNeriješenih,brojPoraza,bodovi")] Tim tim)
         {
 
@@ -83,15 +83,15 @@ namespace UETFA.Controllers
         }
 
         // GET: Timovi/Edit/5
-        [Authorize(Roles = "Admin, Sudija")]
-        public async Task<IActionResult> Edit(int? id)
+        
+        public async Task<IActionResult> Edit(int? idTima)
         {
-            if (id == null)
+            if (idTima == null)
             {
                 return NotFound();
             }
 
-            var tim = await _context.Tim.FindAsync(id);
+            var tim = await _context.Tim.FindAsync(idTima);
             if (tim == null)
             {
                 return NotFound();
@@ -104,10 +104,10 @@ namespace UETFA.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin, Sudija")]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,ime,datiGolovi,primljeniGolovi,brojOdigranihUtakmica,trener,brojPobjeda,brojNeriješenih,brojPoraza,bodovi")] Tim tim)
+        //[Authorize(Roles = "Admin, Sudija")]
+        public async Task<IActionResult> Edit(int idTima, [Bind("ID,ime,datiGolovi,primljeniGolovi,brojOdigranihUtakmica,trener,brojPobjeda,brojNeriješenih,brojPoraza,bodovi")] Tim tim)
         {
-            if (id != tim.ID)
+            if (idTima != tim.ID)
             {
                 return NotFound();
             }
@@ -136,16 +136,16 @@ namespace UETFA.Controllers
         }
 
         // GET: Timovi/Delete/5
-        [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Delete(int? id)
+        //[Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Delete(int? idTima)
         {
-            if (id == null)
+            if (idTima == null)
             {
                 return NotFound();
             }
 
             var tim = await _context.Tim
-                .FirstOrDefaultAsync(m => m.ID == id);
+                .FirstOrDefaultAsync(m => m.ID == idTima);
             if (tim == null)
             {
                 return NotFound();
@@ -172,9 +172,9 @@ namespace UETFA.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        private bool TimExists(int id)
+        private bool TimExists(int idTima)
         {
-            return _context.Tim.Any(e => e.ID == id);
+            return _context.Tim.Any(e => e.ID == idTima);
         }
 
 
@@ -207,15 +207,15 @@ namespace UETFA.Controllers
             return View(igrac);
         }
         // GET: Timovi/Delete/5
-        public async Task<IActionResult> DeleteIgraci(int? id)
+        public async Task<IActionResult> DeleteIgraci(int? idTima)
         {
-            if (id == null)
+            if (idTima == null)
             {
                 return NotFound();
             }
 
             var igrac = await _context.Igrac
-                .FirstOrDefaultAsync(m => m.ID == id);
+                .FirstOrDefaultAsync(m => m.ID == idTima);
             if (igrac == null)
             {
                 return NotFound();
@@ -227,9 +227,9 @@ namespace UETFA.Controllers
         // POST: Timovi/Delete/5
         [HttpPost, ActionName("DeleteIgraci")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmedIgraci(int id)
+        public async Task<IActionResult> DeleteConfirmedIgraci(int idTima)
         {
-            var igrac = await _context.Igrac.FindAsync(id);
+            var igrac = await _context.Igrac.FindAsync(idTima);
             _context.Igrac.Remove(igrac);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
@@ -237,15 +237,15 @@ namespace UETFA.Controllers
 
 
         // GET: Timovi/Details/5
-        public async Task<IActionResult> DetailsIgraci(int? id)
+        public async Task<IActionResult> DetailsIgraci(int? idTima)
         {
-            if (id == null)
+            if (idTima == null)
             {
                 return NotFound();
             }
 
             var igrac = await _context.Igrac
-                .FirstOrDefaultAsync(m => m.ID == id);
+                .FirstOrDefaultAsync(m => m.ID == idTima);
             if (igrac == null)
             {
                 return NotFound();
@@ -255,14 +255,14 @@ namespace UETFA.Controllers
         }
 
         // GET: Timovi/Edit/5
-        public async Task<IActionResult> EditIgraci(int? id)
+        public async Task<IActionResult> EditIgraci(int? idTima)
         {
-            if (id == null)
+            if (idTima == null)
             {
                 return NotFound();
             }
 
-            var igrac = await _context.Igrac.FindAsync(id);
+            var igrac = await _context.Igrac.FindAsync(idTima);
             if (igrac == null)
             {
                 return NotFound();
@@ -275,9 +275,9 @@ namespace UETFA.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> EditIgraci(int id, [Bind("ID,TimID,imePrezime,brojGolova,brojAsistencija,brojCrvenihKartona,brojZutihKartona")] Igrac igrac)
+        public async Task<IActionResult> EditIgraci(int idTima, [Bind("ID,TimID,imePrezime,brojGolova,brojAsistencija,brojCrvenihKartona,brojZutihKartona")] Igrac igrac)
         {
-            if (id != igrac.ID)
+            if (idTima != igrac.ID)
             {
                 return NotFound();
             }
@@ -308,9 +308,9 @@ namespace UETFA.Controllers
 
 
 
-        private bool IgracExists(int id)
+        private bool IgracExists(int idTima)
         {
-            return _context.Igrac.Any(e => e.ID == id);
+            return _context.Igrac.Any(e => e.ID == idTima);
         }
 
         private async Task izracunajSizeAsync()

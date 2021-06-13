@@ -36,15 +36,15 @@ namespace UETFA.Controllers
         }
 
         // GET: Premiums/Details/5
-        public async Task<IActionResult> Details(int? id)
+        public async Task<IActionResult> Details(int? idPremiuma)
         {
-            if (id == null)
+            if (idPremiuma == null)
             {
                 return NotFound();
             }
 
             var premium = await _context.Premium
-                .FirstOrDefaultAsync(m => m.ID == id);
+                .FirstOrDefaultAsync(m => m.ID == idPremiuma);
             if (premium == null)
             {
                 return NotFound();
@@ -83,14 +83,14 @@ namespace UETFA.Controllers
         }
 
         // GET: Premiums/Edit/5
-        public async Task<IActionResult> Edit(int? id)
+        public async Task<IActionResult> Edit(int? idPremiuma)
         {
-            if (id == null)
+            if (idPremiuma == null)
             {
                 return NotFound();
             }
 
-            var premium = await _context.Premium.FindAsync(id);
+            var premium = await _context.Premium.FindAsync(idPremiuma);
             if (premium == null)
             {
                 return NotFound();
@@ -103,9 +103,9 @@ namespace UETFA.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,imeVlasnikaKartice,brojKartice,cvc,datum,IDKor")] Premium premium)
+        public async Task<IActionResult> Edit(int idPremiuma, [Bind("ID,imeVlasnikaKartice,brojKartice,cvc,datum,IDKor")] Premium premium)
         {
-            if (id != premium.ID)
+            if (idPremiuma != premium.ID)
             {
                 return NotFound();
             }
@@ -134,16 +134,16 @@ namespace UETFA.Controllers
         }
 
         // GET: Premiums/Delete/5
-        [Authorize(Roles = "Premium")]
-        public async Task<IActionResult> Delete(int? id)
+        //[Authorize(Roles = "Premium")]
+        public async Task<IActionResult> Delete(int? idPremiuma)
         {
-            if (id == null)
+            if (idPremiuma == null)
             {
                 return NotFound();
             }
 
             var premium = await _context.Premium
-                .FirstOrDefaultAsync(m => m.ID == id);
+                .FirstOrDefaultAsync(m => m.ID == idPremiuma);
             if (premium == null)
             {
                 return NotFound();
@@ -153,20 +153,18 @@ namespace UETFA.Controllers
         }
 
         // POST: Premiums/Delete/5
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Premium")]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        
+        public async Task<IActionResult> DeleteConfirmed(int idPremiuma)
         {
-            var premium = await _context.Premium.FindAsync(id);
+            var premium = await _context.Premium.FindAsync(idPremiuma);
             _context.Premium.Remove(premium);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool PremiumExists(int id)
+        private bool PremiumExists(int idPremiuma)
         {
-            return _context.Premium.Any(e => e.ID == id);
+            return _context.Premium.Any(e => e.ID == idPremiuma);
         }
     }
 }

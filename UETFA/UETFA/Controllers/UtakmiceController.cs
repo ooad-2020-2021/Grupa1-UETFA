@@ -32,8 +32,8 @@ namespace UETFA.Controllers
             {
                 Tim t1 = timovi.Find(t => t.ID == u.idTima1);
                 Tim t2 = timovi.Find(t => t.ID == u.idTima2);
-                ViewBag.nazivi1.Add(new SelectListItem() { Text = t1.ime, Value = (t1.ID).ToString() });
-                ViewBag.nazivi2.Add(new SelectListItem() { Text = t2.ime, Value = (t2.ID).ToString() });
+                ViewBag.nazivi1.Add(new SelectListItem() { Text = t1.ime, Value = t1.ID.ToString() });
+                ViewBag.nazivi2.Add(new SelectListItem() { Text = t2.ime, Value = t2.ID.ToString() });
 
             }
             var statusSort =
@@ -41,7 +41,7 @@ namespace UETFA.Controllers
 
             return View(statusSort);
         }
-        [Authorize(Roles = "Admin, Premium")]
+        
         public async Task<IActionResult> Notifikacije()
         {
             ViewBag.nazivi1 = new List<SelectListItem>();
@@ -52,10 +52,10 @@ namespace UETFA.Controllers
             {
                 if(u.statusUtakmice == "Zavrsena")
                 {
-                Tim t1 = timovi.Find(t => t.ID == u.idTima1);
-                Tim t2 = timovi.Find(t => t.ID == u.idTima2);
-                ViewBag.nazivi1.Add(new SelectListItem() { Text = t1.ime, Value = (t1.ID).ToString() });
-                ViewBag.nazivi2.Add(new SelectListItem() { Text = t2.ime, Value = (t2.ID).ToString() });
+                    Tim t1 = timovi.Find(t => t.ID == u.idTima1);
+                    Tim t2 = timovi.Find(t => t.ID == u.idTima2);
+                    ViewBag.nazivi1.Add(new SelectListItem() { Text = t1.ime, Value = t1.ID.ToString() });
+                    ViewBag.nazivi2.Add(new SelectListItem() { Text = t2.ime, Value = t2.ID.ToString() });
 
                 }
                 
@@ -70,16 +70,16 @@ namespace UETFA.Controllers
 
 
         // GET: Utakmice/Details/5
-        [Authorize(Roles = "Admin, Premium")]
-        public async Task<IActionResult> Details(int? id)
+        //[Authorize(Roles = "Admin, Premium")]
+        public async Task<IActionResult> Details(int? idUtakmice)
         {
-            if (id == null)
+            if (idUtakmice == null)
             {
                 return NotFound();
             }
 
             var utakmica = await _context.Utakmica
-                .FirstOrDefaultAsync(m => m.ID == id);
+                .FirstOrDefaultAsync(m => m.ID == idUtakmice);
             if (utakmica == null)
             {
                 return NotFound();
@@ -90,12 +90,12 @@ namespace UETFA.Controllers
             List<Tim> timovi = _context.Tim.ToList();
             foreach (var u in utakmice)
             {
-                if (u.ID == id)
+                if (u.ID == idUtakmice)
                 {
                     Tim t1 = timovi.Find(t => t.ID == u.idTima1);
                     Tim t2 = timovi.Find(t => t.ID == u.idTima2);
-                    ViewBag.nazivi1.Add(new SelectListItem() { Text = t1.ime, Value = (t1.ID).ToString() });
-                    ViewBag.nazivi2.Add(new SelectListItem() { Text = t2.ime, Value = (t2.ID).ToString() });
+                    ViewBag.nazivi1.Add(new SelectListItem() { Text = t1.ime, Value = t1.ID.ToString() });
+                    ViewBag.nazivi2.Add(new SelectListItem() { Text = t2.ime, Value = t2.ID.ToString() });
                 }
             }
 
@@ -103,7 +103,7 @@ namespace UETFA.Controllers
         }
 
         // GET: Utakmice/Create
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public IActionResult Create()
         {
             ViewBag.Sudije = new List<SelectListItem>();
@@ -122,7 +122,7 @@ namespace UETFA.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin")]
+
         public async Task<IActionResult> Create([Bind("ID,statusUtakmice,datumUtakmice,idTima1,idTima2,rezTim1,rezTim2,Sudija")] Utakmica utakmica)
         {
             if (ModelState.IsValid)
@@ -135,15 +135,15 @@ namespace UETFA.Controllers
         }
 
         // GET: Utakmice/Edit/5
-        [Authorize(Roles = "Admin, Sudija")]
-        public async Task<IActionResult> Edit(int? id)
+        //[Authorize(Roles = "Admin, Sudija")]
+        public async Task<IActionResult> Edit(int? idUtakmice)
         {
-            if (id == null)
+            if (idUtakmice == null)
             {
                 return NotFound();
             }
 
-            var utakmica = await _context.Utakmica.FindAsync(id);
+            var utakmica = await _context.Utakmica.FindAsync(idUtakmice);
             if (utakmica == null)
             {
                 return NotFound();
@@ -163,10 +163,10 @@ namespace UETFA.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Admin, Sudija")]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,statusUtakmice,datumUtakmice,idTima1,idTima2,rezTim1,rezTim2,Sudija")] Utakmica utakmica)
+        
+        public async Task<IActionResult> Edit(int idUtakmice, [Bind("ID,statusUtakmice,datumUtakmice,idTima1,idTima2,rezTim1,rezTim2,Sudija")] Utakmica utakmica)
         {
-            if (id != utakmica.ID)
+            if (idUtakmice != utakmica.ID)
             {
                 return NotFound();
             }
@@ -197,16 +197,16 @@ namespace UETFA.Controllers
         }
 
 
-        public async Task<IActionResult> ZavrsiUtakmicu (int id)
+        public async Task<IActionResult> ZavrsiUtakmicu (int idUtakmice)
         {
-                    var utakmica =
-                    await _context.Utakmica.Where(m => m.ID == id).ToListAsync();
+            var utakmica =
+                    await _context.Utakmica.Where(m => m.ID == idUtakmice).ToListAsync();
 
             if (utakmica[0].statusUtakmice != "Zavrsena")
             {
 
                 var tim1 =
-                await _context.Tim.Where(m => m.ID == utakmica[0].idTima1).ToListAsync();
+                    await _context.Tim.Where(m => m.ID == utakmica[0].idTima1).ToListAsync();
                 var tim2 =
                     await _context.Tim.Where(m => m.ID == utakmica[0].idTima2).ToListAsync();
 
@@ -260,16 +260,16 @@ namespace UETFA.Controllers
 
 
         // GET: Utakmice/Delete/5
-        [Authorize(Roles = "Admin")]
-        public async Task<IActionResult> Delete(int? id)
+        //[Authorize(Roles = "Admin")]
+        public async Task<IActionResult> Delete(int? idUtakmice)
         {
-            if (id == null)
+            if (idUtakmice == null)
             {
                 return NotFound();
             }
 
             var utakmica = await _context.Utakmica
-                .FirstOrDefaultAsync(m => m.ID == id);
+                .FirstOrDefaultAsync(m => m.ID == idUtakmice);
             if (utakmica == null)
             {
                 return NotFound();
@@ -280,12 +280,12 @@ namespace UETFA.Controllers
             List<Tim> timovi = _context.Tim.ToList();
             foreach (var u in utakmice)
             {
-                if (u.ID == id)
+                if (u.ID == idUtakmice)
                 {
                     Tim t1 = timovi.Find(t => t.ID == u.idTima1);
                     Tim t2 = timovi.Find(t => t.ID == u.idTima2);
-                    ViewBag.nazivi1.Add(new SelectListItem() { Text = t1.ime, Value = (t1.ID).ToString() });
-                    ViewBag.nazivi2.Add(new SelectListItem() { Text = t2.ime, Value = (t2.ID).ToString() });
+                    ViewBag.nazivi1.Add(new SelectListItem() { Text = t1.ime, Value = t1.ID.ToString() });
+                    ViewBag.nazivi2.Add(new SelectListItem() { Text = t2.ime, Value = t2.ID.ToString() });
                 }
             }
             return View(utakmica);
@@ -294,17 +294,17 @@ namespace UETFA.Controllers
         // POST: Utakmice/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int idUtakmice)
         {
-            var utakmica = await _context.Utakmica.FindAsync(id);
+            var utakmica = await _context.Utakmica.FindAsync(idUtakmice);
             _context.Utakmica.Remove(utakmica);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool UtakmicaExists(int id)
+        private bool UtakmicaExists(int idUtakmice)
         {
-            return _context.Utakmica.Any(e => e.ID == id);
+            return _context.Utakmica.Any(e => e.ID == idUtakmice);
         }
     }
 }
