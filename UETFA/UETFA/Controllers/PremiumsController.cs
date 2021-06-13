@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -25,6 +26,8 @@ namespace UETFA.Controllers
         {
             return View();
         }
+
+ 
 
         // GET: Premiums
         public async Task<IActionResult> Index()
@@ -131,6 +134,7 @@ namespace UETFA.Controllers
         }
 
         // GET: Premiums/Delete/5
+        [Authorize(Roles = "Premium")]
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -151,6 +155,7 @@ namespace UETFA.Controllers
         // POST: Premiums/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Premium")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
             var premium = await _context.Premium.FindAsync(id);

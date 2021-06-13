@@ -41,25 +41,35 @@
                         </li>
                         @if (User.Identity.IsAuthenticated)
                         {
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Igraci" asp-action="Index">Igraci</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Timovi" asp-action="Index">Tabela</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" asp-area="" asp-controller="Utakmice" asp-action="Index">Utakmica</a>
-                        </li>
-                        <li class="nav-item">
-                            @if (User.IsInRole("Admin") || User.IsInRole("Premium"))
-                            {
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Utakmice" asp-action="Notifikacije">Notifikacije</a>}
-                        </li>
-                        <li class="nav-item">
-                            @if (!(User.IsInRole("Premium")))
-                            {
-                                <a class="nav-link text-dark" asp-area="" asp-controller="Premiums" asp-action="Index">Postani Premium</a>}
-                        </li> }
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Igraci" asp-action="Index">Igraci</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Timovi" asp-action="Index">Tabela</a>
+                            </li>
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" asp-area="" asp-controller="Utakmice" asp-action="Index">Utakmica</a>
+                            </li>
+                            <li class="nav-item">
+                                @if (User.IsInRole("Admin") || User.IsInRole("Premium"))
+                                {
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Utakmice" asp-action="Notifikacije">Notifikacije</a>}
+                            </li>
+                            <li class="nav-item">
+                                @if (!(User.IsInRole("Premium")))
+                                {
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Premiums" asp-action="Index">Postani Premium</a>}
+                            </li>
+                            <li class="nav-item">
+
+                                @if (User.IsInRole("Admin") || User.IsInRole("Premium"))
+                                  {
+                                    <a class="nav-link text-dark" asp-area="" asp-controller="Premiums" asp-action="Delete">Otkaži Premium</a>
+                                                                                                                                                                  }
+    
+
+                            </li>
+}
                     </ul>
                 </div>
             </div>
