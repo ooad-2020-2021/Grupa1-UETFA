@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -52,15 +52,15 @@ namespace UETFA.Controllers
 
         // GET: Igraci/Details/5
 
-        public async Task<IActionResult> Details(int? idIgraca)
+        public async Task<IActionResult> Details(int? ID)
         {
-            if (idIgraca == null)
+            if (ID == null)
             {
                 return NotFound();
             }
 
             var igrac = await _context.Igrac
-                .FirstOrDefaultAsync(m => m.ID == idIgraca);
+                .FirstOrDefaultAsync(m => m.ID == ID);
             if (igrac == null)
             {
                 return NotFound();
@@ -70,7 +70,7 @@ namespace UETFA.Controllers
             List<Tim> timovi = _context.Tim.ToList();
             foreach (var u in igraci)
             {
-                if (u.ID == idIgraca)
+                if (u.ID == ID)
                 {
                     Tim t1 = timovi.Find(t => t.ID == u.TimID);
                     ViewBag.nazivi1.Add(new SelectListItem() { Text = t1.ime, Value = t1.ID.ToString() });
@@ -109,14 +109,14 @@ namespace UETFA.Controllers
 
         // GET: Igraci/Edit/5
 
-        public async Task<IActionResult> Edit(int? idIgraca)
+        public async Task<IActionResult> Edit(int? ID)
         {
-            if (idIgraca == null)
+            if (ID == null)
             {
                 return NotFound();
             }
 
-            var igrac = await _context.Igrac.FindAsync(idIgraca);
+            var igrac = await _context.Igrac.FindAsync(ID);
             if (igrac == null)
             {
                 return NotFound();
@@ -134,9 +134,9 @@ namespace UETFA.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         
-        public async Task<IActionResult> Edit(int idIgraca, [Bind("ID,TimID,imePrezime,brojGolova,brojAsistencija,brojCrvenihKartona,brojZutihKartona")] Igrac igrac)
+        public async Task<IActionResult> Edit(int ID, [Bind("ID,TimID,imePrezime,brojGolova,brojAsistencija,brojCrvenihKartona,brojZutihKartona")] Igrac igrac)
         {
-            if (idIgraca != igrac.ID)
+            if (ID != igrac.ID)
             {
                 return NotFound();
             }
@@ -165,15 +165,15 @@ namespace UETFA.Controllers
         }
 
         // GET: Igraci/Delete/5
-        public async Task<IActionResult> Delete(int? idIgraca)
+        public async Task<IActionResult> Delete(int? ID)
         {
-            if (idIgraca == null)
+            if (ID == null)
             {
                 return NotFound();
             }
 
             var igrac = await _context.Igrac
-                .FirstOrDefaultAsync(m => m.ID == idIgraca);
+                .FirstOrDefaultAsync(m => m.ID == ID);
             if (igrac == null)
             {
                 return NotFound();
@@ -183,7 +183,7 @@ namespace UETFA.Controllers
             List<Tim> timovi = _context.Tim.ToList();
             foreach (var u in igraci)
             {
-                if (u.ID == idIgraca)
+                if (u.ID == ID)
                 {
                     Tim t1 = timovi.Find(t => t.ID == u.TimID);
                     ViewBag.nazivi1.Add(new SelectListItem() { Text = t1.ime, Value = t1.ID.ToString() });
@@ -195,17 +195,17 @@ namespace UETFA.Controllers
         // POST: Igraci/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int idIgraca)
+        public async Task<IActionResult> DeleteConfirmed(int ID)
         {
-            var igrac = await _context.Igrac.FindAsync(idIgraca);
+            var igrac = await _context.Igrac.FindAsync(ID);
             _context.Igrac.Remove(igrac);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool IgracExists(int idIgraca)
+        private bool IgracExists(int ID)
         {
-            return _context.Igrac.Any(e => e.ID == idIgraca);
+            return _context.Igrac.Any(e => e.ID == ID);
         }
     }
 }
