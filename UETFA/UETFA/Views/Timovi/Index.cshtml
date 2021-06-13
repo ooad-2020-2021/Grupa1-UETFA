@@ -6,10 +6,13 @@
 
 <span style="color:white;"> </span>
 <h1 style="color:white;">Tabela</h1>
+@if (Model.Count() != 10)
+    {
+        <p>
+            <a asp-action="Create">Dodaj novi Tim</a>
+        </p>
+    }
 
-<p>
-    <a asp-action="Create">Dodaj novi Tim</a>
-</p>
 <table class="table">
     <thead>
         <tr style="color:white" class="text-center">
@@ -46,44 +49,46 @@
     <tbody>
         @foreach (var item in Model)
         {
-        <tr style="color:white" class="text-center">
-            <td>
-                @Html.DisplayFor(modelItem => item.ime)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.datiGolovi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.primljeniGolovi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.brojOdigranihUtakmica)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.trener)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.bodovi)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.brojPobjeda)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.brojNerjesenih)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.brojPoraza)
-            </td>
-            <td>
-                @if (User.IsInRole("Admin") || User.IsInRole("Sudija")) {
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a>} |
-                 @if (User.IsInRole("Admin") || User.IsInRole("Premium")) {
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> }|
-                 @if (User.IsInRole("Admin"))
-                 {
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a> }
-            </td>
-        </tr>
+            <tr style="color:white" class="text-center">
+                <td>
+                    @Html.DisplayFor(modelItem => item.ime)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.datiGolovi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.primljeniGolovi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.brojOdigranihUtakmica)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.trener)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.bodovi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.brojPobjeda)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.brojNerjesenih)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.brojPoraza)
+                </td>
+                <td>
+                    @if (User.IsInRole("Admin") || User.IsInRole("Sudija"))
+                    {
+                        <a asp-action="Edit" asp-route-id="@item.ID">Edit</a>} |
+                    @if (User.IsInRole("Admin") || User.IsInRole("Premium"))
+                    {
+                        <a asp-action="Details" asp-route-id="@item.ID">Details</a>}|
+                    @if (User.IsInRole("Admin"))
+                    {
+                        <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>}
+                </td>
+            </tr>
         }
     </tbody>
 </table>

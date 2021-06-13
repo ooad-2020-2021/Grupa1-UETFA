@@ -1096,3 +1096,21 @@ C:\Users\Hana\source\repos\Grupa1-UETFApremium\UETFA\UETFA\obj\Debug\netcoreapp3
 C:\Users\Hana\source\repos\Grupa1-UETFApremium\UETFA\UETFA\obj\Debug\netcoreapp3.1\UETFA.dll
 C:\Users\Hana\source\repos\Grupa1-UETFApremium\UETFA\UETFA\obj\Debug\netcoreapp3.1\UETFA.pdb
 C:\Users\Hana\source\repos\Grupa1-UETFApremium\UETFA\UETFA\obj\Debug\netcoreapp3.1\UETFA.genruntimeconfig.cache
+C:\Users\Toshiba\Source\Repos\ooad-2020-2021\Grupa1-UETFA\UETFA\UETFA\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\AccessDenied.cshtml.g.cs
+C:\Users\Toshiba\Source\Repos\ooad-2020-2021\Grupa1-UETFA\UETFA\UETFA\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Login.cshtml.g.cs
+C:\Users\Toshiba\Source\Repos\ooad-2020-2021\Grupa1-UETFA\UETFA\UETFA\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\Register.cshtml.g.cs
+C:\Users\Toshiba\Source\Repos\ooad-2020-2021\Grupa1-UETFA\UETFA\UETFA\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\Account\_ViewImports.cshtml.g.cs
+C:\Users\Toshiba\Source\Repos\ooad-2020-2021\Grupa1-UETFA\UETFA\UETFA\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\Toshiba\Source\Repos\ooad-2020-2021\Grupa1-UETFA\UETFA\UETFA\obj\Debug\netcoreapp3.1\Razor\Areas\Identity\Pages\_ViewImports.cshtml.g.cs
+C:\Users\Toshiba\Source\Repos\ooad-2020-2021\Grupa1-UETFA\UETFA\UETFA\obj\Debug\netcoreapp3.1\Razor\Views\Korisnik\Create.cshtml.g.cs
+C:\Users\Toshiba\Source\Repos\ooad-2020-2021\Grupa1-UETFA\UETFA\UETFA\obj\Debug\netcoreapp3.1\Razor\Views\Korisnik\Delete.cshtml.g.cs
+C:\Users\Toshiba\Source\Repos\ooad-2020-2021\Grupa1-UETFA\UETFA\UETFA\obj\Debug\netcoreapp3.1\Razor\Views\Korisnik\Details.cshtml.g.cs
+C:\Users\Toshiba\Source\Repos\ooad-2020-2021\Grupa1-UETFA\UETFA\UETFA\obj\Debug\netcoreapp3.1\Razor\Views\Korisnik\Edit.cshtml.g.cs
+C:\Users\Toshiba\Source\Repos\ooad-2020-2021\Grupa1-UETFA\UETFA\UETFA\obj\Debug\netcoreapp3.1\Razor\Views\Korisnik\Index.cshtml.g.cs
+C:\Users\Toshiba\Source\Repos\ooad-2020-2021\Grupa1-UETFA\UETFA\UETFA\obj\Debug\netcoreapp3.1\Razor\Views\Premiums\Create.cshtml.g.cs
+C:\Users\Toshiba\Source\Repos\ooad-2020-2021\Grupa1-UETFA\UETFA\UETFA\obj\Debug\netcoreapp3.1\Razor\Views\Premiums\Delete.cshtml.g.cs
+C:\Users\Toshiba\Source\Repos\ooad-2020-2021\Grupa1-UETFA\UETFA\UETFA\obj\Debug\netcoreapp3.1\Razor\Views\Premiums\Details.cshtml.g.cs
+C:\Users\Toshiba\Source\Repos\ooad-2020-2021\Grupa1-UETFA\UETFA\UETFA\obj\Debug\netcoreapp3.1\Razor\Views\Premiums\Edit.cshtml.g.cs
+C:\Users\Toshiba\Source\Repos\ooad-2020-2021\Grupa1-UETFA\UETFA\UETFA\obj\Debug\netcoreapp3.1\Razor\Views\Premiums\Index.cshtml.g.cs
+C:\Users\Toshiba\Source\Repos\ooad-2020-2021\Grupa1-UETFA\UETFA\UETFA\obj\Debug\netcoreapp3.1\Razor\Views\Premiums\Pogledaj pogodnosti.cshtml.g.cs
+C:\Users\Toshiba\Source\Repos\ooad-2020-2021\Grupa1-UETFA\UETFA\UETFA\obj\Debug\netcoreapp3.1\Razor\Views\Premiums\PogledajPogodnosti.cshtml.g.cs

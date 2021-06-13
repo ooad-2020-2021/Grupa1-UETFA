@@ -14,6 +14,7 @@ namespace UETFA.Controllers
     public class TimoviController : Controller
     {
         private readonly ApplicationDbContext _context;
+        private int timSize;
 
         public TimoviController(ApplicationDbContext context)
         {
@@ -52,8 +53,14 @@ namespace UETFA.Controllers
 
         // GET: Timovi/Create
         [Authorize(Roles = "Admin")]
-        public IActionResult Create()
+        public async Task<IActionResult> CreateAsync()
         {
+            var timovi = await _context.Tim.ToListAsync();
+            timSize = timovi.Count;
+            if (timSize == 10)
+            {
+                return RedirectToAction(nameof(Index));
+            }
             return View();
         }
 
@@ -65,7 +72,8 @@ namespace UETFA.Controllers
         [Authorize(Roles = "Admin")]
         public async Task<IActionResult> Create([Bind("ID,ime,datiGolovi,primljeniGolovi,brojOdigranihUtakmica,trener,brojPobjeda,brojNeriješenih,brojPoraza,bodovi")] Tim tim)
         {
-            if (ModelState.IsValid)
+
+           if (ModelState.IsValid)
             {
                 _context.Add(tim);
                 await _context.SaveChangesAsync();
@@ -303,6 +311,12 @@ namespace UETFA.Controllers
         private bool IgracExists(int id)
         {
             return _context.Igrac.Any(e => e.ID == id);
+        }
+
+        private async Task izracunajSizeAsync()
+        {
+            var timovi = await _context.Tim.ToListAsync();
+            timSize = timovi.Count;
         }
 
 
