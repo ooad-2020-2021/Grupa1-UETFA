@@ -13,6 +13,7 @@ namespace UETFA.Models
         [Key]
         public int ID { get; set; }
         // dodati TimID
+        [DisplayName("Ime Tima")]
         public int TimID { get; set; }
         [DisplayName("Ime i prezime")]
         public string imePrezime { get; set; }

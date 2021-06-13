@@ -7,20 +7,16 @@
 <span style="color:white;"> </span>
 <h1 style="color:white;">Igrači</h1>
 
- @if (User.IsInRole("Admin"))
- {
+
 <p>
     <a asp-action="Create">Dodaj novog igrača</a>
 </p>
- }
-  @if (User.IsInRole("Admin") || User.IsInRole("Premium"))
-  {
 <p>
     <a asp-action="Index">Strijelci RANG LISTA</a>
 </p>
 <p>
     <a asp-action="Asistenti">Asistenti RANG LISTA</a>
-</p> }
+</p> 
 <table class="table">
     <thead>
         <tr style="color:white" class="text-center">
@@ -70,13 +66,11 @@
                         @Html.DisplayFor(modelItem => item.brojZutihKartona)
                     </td>
                     <td>
-                        @if (User.IsInRole("Admin"))
-                        {
-                            <a asp-action="Edit" asp-route-id="@item.ID">Edit</a>}|
+
+                            <a asp-action="Edit" asp-route-id="@item.ID">Edit</a>|
                         <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                        @if (User.IsInRole("Admin"))
-                        {
-                            <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>}
+
+                            <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
                         </td>
                 </tr>
                 i++;
